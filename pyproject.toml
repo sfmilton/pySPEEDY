@@ -24,6 +24,7 @@ dependencies = [
     "numpy",
     "netCDF4",
     "xarray",
+    "python-dateutil",
     "jinja2",
 ]
 

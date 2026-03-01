@@ -52,6 +52,11 @@ contains
 
         ! Check consistency of coupling and prescribed SST anomaly flags
         if (sea_coupling_flag >= 4) state%sst_anomaly_coupling_flag = .true.
+        if (state%held_suarez_mode) then
+            state%land_coupling_flag = .false.
+            state%sst_anomaly_coupling_flag = .false.
+            state%increase_co2 = .false.
+        end if
 
         ! =========================================================================
         ! Initialization of atmospheric model constants and variables
@@ -65,6 +70,10 @@ contains
 
         if (error_code /= SUCCESS) then
             return
+        end if
+
+        if (state%held_suarez_mode) then
+            state%tr(:, :, :, :, :) = (0.0, 0.0)
         end if
 
         ! =========================================================================
@@ -83,7 +92,7 @@ contains
 
         ! Initialize coordinates
         state%lev(:) = real(state%mod_geometry%fsg(:))
-        state%lon(:) = (/(3.75 * k, k = 0, ix - 1)/)
+        state%lon(:) = (/(360.0 * k / ix, k = 0, ix - 1)/)
         state%lat(:) = (/(real(state%mod_geometry%radang(k)) * 90.0 / asin(1.0), k = 1, il)/)
 
         state%initialized = .true.

@@ -709,6 +709,106 @@
         "alt_name": "compute_shortwave",
         "std_name": "compute_shortwave"
     },
+    "held_suarez_mode": {
+        "dtype": "logical",
+        "dims": null,
+        "desc": "Flag for Held-Suarez dry-physics forcing",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "held_suarez_mode",
+        "std_name": "held_suarez_mode"
+    },
+    "hs_trefc": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez equilibrium surface temperature",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_trefc",
+        "std_name": "hs_trefc"
+    },
+    "hs_delta_ty": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez equator-to-pole temperature contrast",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_delta_ty",
+        "std_name": "hs_delta_ty"
+    },
+    "hs_delta_theta_z": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez vertical temperature contrast",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_delta_theta_z",
+        "std_name": "hs_delta_theta_z"
+    },
+    "hs_tmin": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez minimum equilibrium temperature",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_tmin",
+        "std_name": "hs_tmin"
+    },
+    "hs_sigma_b": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez boundary-layer sigma threshold",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_sigma_b",
+        "std_name": "hs_sigma_b"
+    },
+    "hs_tau_a_days": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez upper-air relaxation time in days",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_tau_a_days",
+        "std_name": "hs_tau_a_days"
+    },
+    "hs_tau_s_days": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez boundary-layer relaxation time in days",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_tau_s_days",
+        "std_name": "hs_tau_s_days"
+    },
+    "hs_tau_f_days": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez Rayleigh-drag time in days",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_tau_f_days",
+        "std_name": "hs_tau_f_days"
+    },
+    "hs_min_pressure_ratio": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Held-Suarez minimum pressure ratio used in log(p/p0)",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "hs_min_pressure_ratio",
+        "std_name": "hs_min_pressure_ratio"
+    },
     "air_absortivity_co2": {
         "dtype": "real(8)",
         "dims": null,

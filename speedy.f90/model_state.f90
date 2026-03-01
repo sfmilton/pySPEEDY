@@ -341,6 +341,16 @@ module model_state
         integer :: current_step ! Current model step.
         logical :: increase_co2 !  Flag for CO2 optical thickness increase
         logical :: compute_shortwave ! Flag for shortwave radiation routine (turned on and off in main loop depending on the value of nstrad)
+        logical :: held_suarez_mode ! Flag for Held-Suarez dry-physics forcing
+        real(8) :: hs_trefc ! Held-Suarez equilibrium surface temperature
+        real(8) :: hs_delta_ty ! Held-Suarez equator-to-pole temperature contrast
+        real(8) :: hs_delta_theta_z ! Held-Suarez vertical temperature contrast
+        real(8) :: hs_tmin ! Held-Suarez minimum equilibrium temperature
+        real(8) :: hs_sigma_b ! Held-Suarez boundary-layer sigma threshold
+        real(8) :: hs_tau_a_days ! Held-Suarez upper-air relaxation time in days
+        real(8) :: hs_tau_s_days ! Held-Suarez boundary-layer relaxation time in days
+        real(8) :: hs_tau_f_days ! Held-Suarez Rayleigh-drag time in days
+        real(8) :: hs_min_pressure_ratio ! Held-Suarez minimum pressure ratio used in log(p/p0)
         real(8) :: air_absortivity_co2 ! Absorptivity of air in CO2 band
         logical :: land_coupling_flag ! Flag for land-coupling (0: off, 1: on)
         logical :: sst_anomaly_coupling_flag ! Weight for obs. SST anomaly in coupled runs
@@ -778,6 +788,16 @@ contains
         ! Initialize default values for scalars
         state%increase_co2= .false.
         state%compute_shortwave= .true.
+        state%held_suarez_mode= .false.
+        state%hs_trefc= 315.0
+        state%hs_delta_ty= 60.0
+        state%hs_delta_theta_z= 10.0
+        state%hs_tmin= 200.0
+        state%hs_sigma_b= 0.7
+        state%hs_tau_a_days= 40.0
+        state%hs_tau_s_days= 4.0
+        state%hs_tau_f_days= 1.0
+        state%hs_min_pressure_ratio= 1.0e-4
         state%air_absortivity_co2= 6.0
         state%land_coupling_flag= .true.
         state%sst_anomaly_coupling_flag= .true.

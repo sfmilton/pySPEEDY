@@ -1,0 +1,80 @@
+# pySPEEDY shared configuration.
+# 
+# `model` values are compile-time settings. If you change them, rebuild with:
+# `python -m pip install -e .`
+#
+# `run` values are runtime defaults used by the example scripts and callback defaults.
+{
+  "model": {
+    # Spectral truncation. T30 is the active default.
+    # T42 reference:
+    # "trunc": 42,
+    "trunc": 30,
+
+    # Horizontal Gaussian grid dimensions.
+    # Full latitude count is `2 * iy`, so `iy: 24` means 48 latitudes total.
+    # T42 reference:
+    # "ix": 128,
+    # "iy": 32,
+    "ix": 96,
+    "iy": 24,
+
+    # Vertical levels and tracer/state-array dimensions.
+    "kx": 8,
+    "ntr": 1,
+    "t_levs": 2,
+    "aux_dim": 3,
+
+    # Number of timesteps per day. 36 means a 40-minute timestep.
+    # T42 reference:
+    # "nsteps": 72,
+    "nsteps": 36,
+
+    # Core physics/timestep controls passed through to the Fortran model.
+    "iseasc": 1,
+    # T42 reference:
+    # "nstrad": 6,
+    "nstrad": 3,
+    "sppt_on": false,
+    "rob": 0.05,
+    "wil": 0.53,
+    "alph": 0.5
+  },
+  "run": {
+    # Default run window used by examples.
+    # `end_date` is exclusive: 1980-01-01 -> 1980-01-08 is one week.
+    "start_date": "1980-01-01",
+    "end_date": "1980-01-08",
+
+    # Default output location for example runs.
+    "output_dir": "./data",
+
+    # Callback intervals in model timesteps.
+    # With nsteps=36, history_interval=36 writes one file per day.
+    # diag_interval=180 runs diagnostics every 5 days.
+    # T42 reference:
+    # "history_interval": 72,
+    # "diag_interval": 360,
+    "history_interval": 36,
+    "diag_interval": 180,
+
+    # Exporter defaults used by examples.
+    "verbose_output": true,
+
+    # Null means "use the package default output variable list".
+    "output_vars": null
+  },
+  "held_suarez": {
+    # Runtime Held-Suarez benchmark parameters. These do not require a rebuild.
+    # Temperature terms are in Kelvin. Relaxation and drag times are in days.
+    "equilibrium_surface_temperature": 315.0,
+    "equator_pole_temperature_contrast": 60.0,
+    "vertical_temperature_contrast": 10.0,
+    "minimum_equilibrium_temperature": 200.0,
+    "boundary_layer_sigma": 0.7,
+    "upper_air_relaxation_days": 40.0,
+    "boundary_layer_relaxation_days": 4.0,
+    "rayleigh_drag_days": 1.0,
+    "minimum_pressure_ratio": 0.0001
+  }
+}

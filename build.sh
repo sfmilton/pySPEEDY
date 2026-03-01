@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python setup.py build_ext -i
+python scripts/render_model_config.py
+python -m pip install -e .

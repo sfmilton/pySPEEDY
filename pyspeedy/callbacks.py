@@ -25,7 +25,11 @@ from pyspeedy import (
     _speedy,  # noqa
     DEFAULT_OUTPUT_VARS,
 )
+from pyspeedy.config import load_config
 from pyspeedy.speedy import SpeedyEns, Speedy
+
+DEFAULT_RUN_CONFIG = load_config().run
+DEFAULT_MODEL_CONFIG = load_config().model
 
 
 class BaseCallback:
@@ -82,7 +86,7 @@ class DiagnosticCheck(BaseCallback):
     Callback used to check on that the prognostic variables are inside reasonable ranges.
     """
 
-    def __init__(self, interval=36):
+    def __init__(self, interval=None):
         """
         Constructor.
 
@@ -91,6 +95,8 @@ class DiagnosticCheck(BaseCallback):
         interval: int
             Interval, in time steps, for which the diagnostic checkes are run.
         """
+        if interval is None:
+            interval = DEFAULT_MODEL_CONFIG.nsteps
         super().__init__(interval=interval)
 
     def __call__(self, model_instance):
@@ -129,7 +135,7 @@ class ModelCheckpoint(BaseCallback):
 
     def __init__(
         self,
-        interval=36,
+        interval=None,
         verbose=False,
         spinup_date=None,
         variables=None,
@@ -155,6 +161,8 @@ class ModelCheckpoint(BaseCallback):
         """
         if variables is None:
             variables = DEFAULT_OUTPUT_VARS
+        if interval is None:
+            interval = DEFAULT_RUN_CONFIG.history_interval
         self.variables = variables
         self.output_dir = output_dir
         self.history_interval = interval
@@ -193,12 +201,12 @@ class XarrayExporter(BaseCallback):
 
     def __init__(
         self,
-        interval=36,
+        interval=None,
         verbose=False,
         spinup_date=None,
         variables=None,
         output_dir="./",
-        filename_fmt="%Y-%m-%d_%H%M.nc",
+        filename_fmt=None,
     ):
         """
         Parameters
@@ -224,6 +232,11 @@ class XarrayExporter(BaseCallback):
         """
         if variables is None:
             variables = DEFAULT_OUTPUT_VARS
+        if interval is None:
+            interval = DEFAULT_RUN_CONFIG.history_interval
+        self.include_output_tag = filename_fmt is None
+        if filename_fmt is None:
+            filename_fmt = "%Y-%m-%d_%H%M.nc"
         self.variables = variables
         self.output_dir = output_dir
         self.filename_fmt = filename_fmt
@@ -249,6 +262,8 @@ class XarrayExporter(BaseCallback):
                 continue
 
         file_name = model_instance.current_date.strftime(self.filename_fmt)
+        if self.include_output_tag:
+            file_name = f"{model_instance.output_tag}_{file_name}"
         os.makedirs(self.output_dir, exist_ok=True)
         output_file_path = os.path.join(self.output_dir, file_name)
         self.print_msg(f"Saving model output at: {output_file_path}.")

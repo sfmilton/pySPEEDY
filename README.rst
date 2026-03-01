@@ -21,6 +21,15 @@ Documentation
 
 Check the latest documentation of the project `here <https://pyspeedy.readthedocs.io/en/latest/index.html>`__.
 
+Repository-oriented Markdown notes are also available locally in ``docs/markdown/``:
+
+- `Markdown notes index <docs/markdown/README.md>`__
+- `Model overview <docs/markdown/model-overview.md>`__
+- `Equations and numerics <docs/markdown/equations-and-numerics.md>`__
+- `Physics and coupling <docs/markdown/physics-and-coupling.md>`__
+- `Running and configuration <docs/markdown/running-and-configuration.md>`__
+- `Idealized cases <docs/markdown/idealized-cases.md>`__
+
 Run you first SPEEDY forecast
 =============================
 
@@ -84,6 +93,7 @@ To run pySPEEDY, you also need:
 
 * xarray
 * netCDF4
+* python-dateutil
 * matplotlib (examples)
 * cartopy (examples)
 
@@ -120,6 +130,15 @@ and the compilation mode for the SPEEDY.f90 model ("default", "profile", "debug"
 
 The "-e" option install the package in "editable" mode. This will leave the compiled extensions inside the source
 folder after the installation.
+
+Configuration
+~~~~~~~~~~~~~
+
+The default model geometry and run settings live in ``pyspeedy/data/model_config.yml``.
+
+- Edit the ``run`` section to change example defaults such as dates, output intervals, and output directory.
+- Edit the ``model`` section to change spectral truncation, grid size, or timestep, then rebuild the package so the
+  generated Fortran parameters and compiled extension stay in sync.
 
 Runtime dependencies
 ====================

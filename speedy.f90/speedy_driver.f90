@@ -4294,6 +4294,226 @@ contains
         state_ptr%p%compute_shortwave=compute_shortwave_in
     end subroutine
 
+    subroutine get_held_suarez_mode(state_cnt, held_suarez_mode_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Flag for Held-Suarez dry-physics forcing
+        logical, intent(out) :: held_suarez_mode_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        held_suarez_mode_out=state_ptr%p%held_suarez_mode
+    end subroutine
+
+    subroutine set_held_suarez_mode(state_cnt, held_suarez_mode_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Flag for Held-Suarez dry-physics forcing
+        logical, intent(in) :: held_suarez_mode_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%held_suarez_mode=held_suarez_mode_in
+    end subroutine
+
+    subroutine get_hs_trefc(state_cnt, hs_trefc_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez equilibrium surface temperature
+        real(8), intent(out) :: hs_trefc_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_trefc_out=state_ptr%p%hs_trefc
+    end subroutine
+
+    subroutine set_hs_trefc(state_cnt, hs_trefc_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez equilibrium surface temperature
+        real(8), intent(in) :: hs_trefc_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_trefc=hs_trefc_in
+    end subroutine
+
+    subroutine get_hs_delta_ty(state_cnt, hs_delta_ty_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez equator-to-pole temperature contrast
+        real(8), intent(out) :: hs_delta_ty_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_delta_ty_out=state_ptr%p%hs_delta_ty
+    end subroutine
+
+    subroutine set_hs_delta_ty(state_cnt, hs_delta_ty_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez equator-to-pole temperature contrast
+        real(8), intent(in) :: hs_delta_ty_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_delta_ty=hs_delta_ty_in
+    end subroutine
+
+    subroutine get_hs_delta_theta_z(state_cnt, hs_delta_theta_z_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez vertical temperature contrast
+        real(8), intent(out) :: hs_delta_theta_z_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_delta_theta_z_out=state_ptr%p%hs_delta_theta_z
+    end subroutine
+
+    subroutine set_hs_delta_theta_z(state_cnt, hs_delta_theta_z_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez vertical temperature contrast
+        real(8), intent(in) :: hs_delta_theta_z_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_delta_theta_z=hs_delta_theta_z_in
+    end subroutine
+
+    subroutine get_hs_tmin(state_cnt, hs_tmin_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez minimum equilibrium temperature
+        real(8), intent(out) :: hs_tmin_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_tmin_out=state_ptr%p%hs_tmin
+    end subroutine
+
+    subroutine set_hs_tmin(state_cnt, hs_tmin_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez minimum equilibrium temperature
+        real(8), intent(in) :: hs_tmin_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_tmin=hs_tmin_in
+    end subroutine
+
+    subroutine get_hs_sigma_b(state_cnt, hs_sigma_b_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez boundary-layer sigma threshold
+        real(8), intent(out) :: hs_sigma_b_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_sigma_b_out=state_ptr%p%hs_sigma_b
+    end subroutine
+
+    subroutine set_hs_sigma_b(state_cnt, hs_sigma_b_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez boundary-layer sigma threshold
+        real(8), intent(in) :: hs_sigma_b_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_sigma_b=hs_sigma_b_in
+    end subroutine
+
+    subroutine get_hs_tau_a_days(state_cnt, hs_tau_a_days_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez upper-air relaxation time in days
+        real(8), intent(out) :: hs_tau_a_days_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_tau_a_days_out=state_ptr%p%hs_tau_a_days
+    end subroutine
+
+    subroutine set_hs_tau_a_days(state_cnt, hs_tau_a_days_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez upper-air relaxation time in days
+        real(8), intent(in) :: hs_tau_a_days_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_tau_a_days=hs_tau_a_days_in
+    end subroutine
+
+    subroutine get_hs_tau_s_days(state_cnt, hs_tau_s_days_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez boundary-layer relaxation time in days
+        real(8), intent(out) :: hs_tau_s_days_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_tau_s_days_out=state_ptr%p%hs_tau_s_days
+    end subroutine
+
+    subroutine set_hs_tau_s_days(state_cnt, hs_tau_s_days_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez boundary-layer relaxation time in days
+        real(8), intent(in) :: hs_tau_s_days_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_tau_s_days=hs_tau_s_days_in
+    end subroutine
+
+    subroutine get_hs_tau_f_days(state_cnt, hs_tau_f_days_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez Rayleigh-drag time in days
+        real(8), intent(out) :: hs_tau_f_days_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_tau_f_days_out=state_ptr%p%hs_tau_f_days
+    end subroutine
+
+    subroutine set_hs_tau_f_days(state_cnt, hs_tau_f_days_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez Rayleigh-drag time in days
+        real(8), intent(in) :: hs_tau_f_days_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_tau_f_days=hs_tau_f_days_in
+    end subroutine
+
+    subroutine get_hs_min_pressure_ratio(state_cnt, hs_min_pressure_ratio_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Held-Suarez minimum pressure ratio used in log(p/p0)
+        real(8), intent(out) :: hs_min_pressure_ratio_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        hs_min_pressure_ratio_out=state_ptr%p%hs_min_pressure_ratio
+    end subroutine
+
+    subroutine set_hs_min_pressure_ratio(state_cnt, hs_min_pressure_ratio_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Held-Suarez minimum pressure ratio used in log(p/p0)
+        real(8), intent(in) :: hs_min_pressure_ratio_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%hs_min_pressure_ratio=hs_min_pressure_ratio_in
+    end subroutine
+
     subroutine get_air_absortivity_co2(state_cnt, air_absortivity_co2_out)
         use params
         integer(8), intent(in) :: state_cnt
@@ -4904,6 +5124,56 @@ contains
     end subroutine
 
     subroutine is_array_compute_shortwave(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_held_suarez_mode(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_trefc(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_delta_ty(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_delta_theta_z(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_tmin(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_sigma_b(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_tau_a_days(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_tau_s_days(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_tau_f_days(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_hs_min_pressure_ratio(var_is_array)
         logical, intent(out) :: var_is_array
         var_is_array=.false.
     end subroutine

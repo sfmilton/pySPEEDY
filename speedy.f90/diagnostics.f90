@@ -68,6 +68,10 @@ contains
                 !print 2003, (diag(kk, 3), kk=1, kx)
                 write(0, *) "Model variables out of accepted range"
                 write(0, *) "step =", state%current_step
+                write(0, *) "level =", k
+                write(0, *) "eddy kinetic energy (vor) =", diag(k, 1)
+                write(0, *) "eddy kinetic energy (div) =", diag(k, 2)
+                write(0, *) "global mean temperature =", diag(k, 3)
                 error_code = E_DIAGNOSTICS_OUTSIDE_RANGE
                 return
             end if

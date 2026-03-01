@@ -54,6 +54,7 @@ FILES= \
 	   fourier.o \
 	   geometry.o \
  	   geopotential.o \
+	   held_suarez.o \
 	   horizontal_diffusion.o \
 	   humidity.o \
 	   implicit.o \
@@ -105,6 +106,7 @@ model_control.o        : types.o
 fourier.o              : params.o geometry.o fftpack.o types.o
 geometry.o             : params.o physical_constants.o types.o
 geopotential.o         : params.o physical_constants.o geometry.o
+held_suarez.o          : params.o physical_constants.o types.o
 horizontal_diffusion.o : params.o physical_constants.o types.o
 humidity.o             : params.o types.o
 implicit.o             : params.o physical_constants.o geometry.o\
@@ -130,6 +132,7 @@ mod_radcon.o           : params.o types.o
 params.o               : types.o
 physics.o              : params.o coupler.o physical_constants.o boundaries.o land_model.o\
                          sea_model.o sppt.o convection.o large_scale_condensation.o surface_fluxes.o\
+                         held_suarez.o \
                          vertical_diffusion.o shortwave_radiation.o longwave_radiation.o humidity.o\
                          geometry.o  types.o model_state.o
 longwave_radiation.o   : params.o physical_constants.o mod_radcon.o geometry.o types.o \

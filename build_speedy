@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Build script for pySPEEDY with --no-build-isolation
+# This avoids meson-python F2PY path mangling issues on macOS
+
+set -e
+
+echo "Cleaning previous builds..."
+rm -rf build/ .mesonpy-python-* dist/
+
+echo "Uninstalling pyspeedy (if installed)..."
+pip uninstall pyspeedy -y || true
+
+echo "Installing pyspeedy with --no-build-isolation..."
+pip install --no-build-isolation -e .
+
+echo "✓ Build complete!"

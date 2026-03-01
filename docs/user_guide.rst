@@ -13,7 +13,7 @@ Its main characteristics are:
 - Hydrostatic σ-coordinate in the vertical coordinate.
 - The principal model prognostic variables are vorticity, divergence, temperature, and the logarithm of surface pressure.
 - Humidity is advected by the dynamical core, and with its sources and sinks are determined physical parametrizations.
-- The horizontal resolution corresponds to a triangular spectral truncation at total wavenumber 30 (
+- The default horizontal resolution in this repository is a triangular spectral truncation at total wavenumber 30 (
   T30, approximately 3.75 x 3.75 degree resolution).
   This corresponds to a [Gaussian grid](https://en.wikipedia.org/wiki/Gaussian_grid) of 96 (longitude) by 48 (latitude) points.
 - For the vertical coordinate, eight levels are used with boundaries at σ values of 0, 0.05, 0.14, 0.26, 0.42, 0.60, 0.77, 0.90 and 1.
@@ -53,6 +53,8 @@ For example, for a one-month forecast (30 days), the shape of the anomaly field 
 By default, the pySPEEDY package includes the example boundary conditions initially included in the SPEEDY.f90 package.
 These fields were derived from the ERA-interim re-analysis using the 1979-2008 period.
 In addition, the default boundary conditions include the monthly SST anomalies for the 1979-01-01 to 2013-12-01 period.
+If the configured model grid differs from the bundled data grid, pySPEEDY will regrid the bundled inputs to the
+configured lon/lat coordinates before initializing the model.
 
 The initial conditions
 ----------------------
@@ -101,18 +103,17 @@ To run the model, we need to create an SPEEDY instance, set the boundary conditi
 
 The next example shows how to run a 1 week simulation using the default boundary and initial conditions::
 
-  from datetime import datetime
-
   from pyspeedy import Speedy
+  from pyspeedy.callbacks import DiagnosticCheck, XarrayExporter
+  from pyspeedy.config import load_config
 
-  # Create an instance of the speedy model.
+  config = load_config()
+  run_config = config.run
+
+  # Create an instance of the speedy model using the defaults in pyspeedy/data/model_config.yml.
   model = Speedy(
-      output_dir="./data",  # Output directory where the model output will be stored
-      start_date=datetime(1980, 1, 1),  # Simulation start date. It should be a datetime object.
-      end_date=datetime(1980, 1, 7),  # Simulation end date.
-      history_interval=36,  # Every how many time steps we will save the output file. 36 -> once per day.
-      diag_interval=180,  # Every how many time steps we will compute and print the diagnostics.
-      output_vars=None,  # Which variables to output. If none, save the most commonly used variables.
+      start_date=run_config.start_date,
+      end_date=run_config.end_date,
   )
   # At this point, the model state is "empty".
 
@@ -120,13 +121,22 @@ The next example shows how to run a 1 week simulation using the default boundary
   # This function will set the default boundary conditions derived from the ERA reanalysis.
   model.set_bc()
 
+  callbacks = [
+      DiagnosticCheck(interval=run_config.diag_interval),
+      XarrayExporter(
+          interval=run_config.history_interval,
+          output_dir=run_config.output_dir,
+          variables=run_config.output_vars,
+          verbose=run_config.verbose_output,
+      ),
+  ]
 
   # Print the names of output variables that will be saved.
   # Note that the variables shown next are in the grid space (not the spectral space)
-  print(model.output_vars)
+  print(callbacks[1].variables)
 
   # Run the model
-  model.run()
+  model.run(callbacks=callbacks)
   # After the model is run, the model state will keep the last values of the last integration step.
 
 

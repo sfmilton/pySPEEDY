@@ -31,7 +31,7 @@ netcdf_dep_f = dependency('netcdf', language: 'fortran')
 # --------------------------------------------------
 speedy_lib = custom_target(
   'speedy_library',
-  command: ['make', '-d', '-C', meson.current_source_dir(), 'all'],
+  command: ['make', '-d', '-C', meson.current_source_dir(), 'all', 'PYTHON=' + py.path()],
   output: 'makefile.output',
   capture: true
 
@@ -95,4 +95,3 @@ py.extension_module(
 install_subdir('pyspeedy',
     install_dir: py.get_install_dir(),
 )
-
