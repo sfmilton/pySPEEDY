@@ -1,3 +1,5 @@
+!> author: Sean Milton (Codex assisted)
+!  date: 01/03/2026
 !> Held-Suarez dry benchmark forcing.
 module held_suarez
     use types, only : p
