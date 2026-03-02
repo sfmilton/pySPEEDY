@@ -40,6 +40,7 @@ with open(PACKAGE_DATA_DIR / "model_state.json") as fp:
 DEFAULT_CONFIG = load_config()
 MODEL_CONFIG = DEFAULT_CONFIG.model
 HELD_SUAREZ_CONFIG = DEFAULT_CONFIG.held_suarez
+GWD_CONFIG = DEFAULT_CONFIG.gravity_wave_drag
 VALID_PHYSICS_MODES = frozenset(("speedy", "held_suarez"))
 
 
@@ -315,6 +316,7 @@ class Speedy:
         self.set_params(start_date=start_date, end_date=end_date)
         self._physics_mode = None
         self.set_physics_mode(physics_mode)
+        self._apply_gwd_defaults()
 
         self._initialized_bc = False
         self._initialized_ssta = False
@@ -459,6 +461,13 @@ class Speedy:
         self["hs_tau_s_days"] = HELD_SUAREZ_CONFIG.boundary_layer_relaxation_days
         self["hs_tau_f_days"] = HELD_SUAREZ_CONFIG.rayleigh_drag_days
         self["hs_min_pressure_ratio"] = HELD_SUAREZ_CONFIG.minimum_pressure_ratio
+
+    def _apply_gwd_defaults(self):
+        self["orographic_gwd_enabled"] = GWD_CONFIG.enabled
+        self["gwd_time_scale_days"] = GWD_CONFIG.time_scale_days
+        self["gwd_oro_threshold_m"] = GWD_CONFIG.orography_threshold_m
+        self["gwd_oro_scale_m"] = GWD_CONFIG.orography_scale_m
+        self["gwd_launch_sigma"] = GWD_CONFIG.launch_sigma
 
     def set_physics_mode(self, physics_mode):
         """Set the physics mode for the current model state before initialization."""

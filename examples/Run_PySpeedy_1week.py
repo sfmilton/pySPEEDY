@@ -1,5 +1,10 @@
 from pyspeedy import Speedy
-from pyspeedy.callbacks import DiagnosticCheck, XarrayExporter
+from pyspeedy.callbacks import (
+    DailyDiagnosticsExporter,
+    DiagnosticCheck,
+    RuntimeSummary,
+    XarrayExporter,
+)
 from pyspeedy.config import load_config
 
 config = load_config()
@@ -18,17 +23,26 @@ model.set_bc()
 
 callbacks = [
     DiagnosticCheck(interval=run_config.diag_interval),
+    RuntimeSummary(
+        interval=run_config.diag_interval,
+        verbose=run_config.verbose_output,
+    ),
     XarrayExporter(
         interval=run_config.history_interval,
         output_dir=run_config.output_dir,
         variables=run_config.output_vars,
         verbose=run_config.verbose_output,
     ),
+    DailyDiagnosticsExporter(
+        output_dir=run_config.output_dir,
+        verbose=run_config.verbose_output,
+    ),
 ]
+history_exporter = callbacks[2]
 
 # Print the names of output variables that will be saved.
 # Note that the variables shown next are in the grid space (not the spectral space)
-print(callbacks[1].variables)
+print(history_exporter.variables)
 
 # Run the model
 model.run(callbacks=callbacks)

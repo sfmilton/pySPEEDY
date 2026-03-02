@@ -70,6 +70,276 @@ module model_state
         real(8), allocatable, dimension(:, :)  :: ps_grid ! surface_air_pressure
         logical :: ps_grid_initialized = .false.
 
+        real(8), allocatable, dimension(:, :, :)  :: ttend_dyn_accum ! Accumulated daily dynamical temperature tendency
+        logical :: ttend_dyn_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_phy_accum ! Accumulated daily physical temperature tendency
+        logical :: ttend_phy_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_cnv_accum ! Accumulated daily convective temperature tendency
+        logical :: ttend_cnv_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_lsc_accum ! Accumulated daily large-scale condensation temperature tendency
+        logical :: ttend_lsc_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_sw_accum ! Accumulated daily shortwave-radiative temperature tendency
+        logical :: ttend_sw_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_lw_accum ! Accumulated daily longwave-radiative temperature tendency
+        logical :: ttend_lw_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_pbl_accum ! Accumulated daily boundary-layer and surface-flux temperature tendency
+        logical :: ttend_pbl_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_hs_accum ! Accumulated daily Held-Suarez temperature tendency
+        logical :: ttend_hs_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_dyn_accum ! Accumulated daily dynamical specific humidity tendency
+        logical :: qtend_dyn_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_phy_accum ! Accumulated daily physical specific humidity tendency
+        logical :: qtend_phy_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_cnv_accum ! Accumulated daily convective specific humidity tendency
+        logical :: qtend_cnv_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_lsc_accum ! Accumulated daily large-scale-condensation specific humidity tendency
+        logical :: qtend_lsc_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_pbl_accum ! Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        logical :: qtend_pbl_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_dyn_accum ! Accumulated daily dynamical eastward-wind tendency
+        logical :: utend_dyn_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_dyn_accum ! Accumulated daily dynamical northward-wind tendency
+        logical :: vtend_dyn_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_phy_accum ! Accumulated daily physical eastward-wind tendency
+        logical :: utend_phy_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_phy_accum ! Accumulated daily physical northward-wind tendency
+        logical :: vtend_phy_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_pbl_accum ! Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        logical :: utend_pbl_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_pbl_accum ! Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        logical :: vtend_pbl_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_gwd_accum ! Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        logical :: utend_gwd_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_gwd_accum ! Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        logical :: vtend_gwd_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_hs_accum ! Accumulated daily Held-Suarez eastward-wind tendency
+        logical :: utend_hs_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_hs_accum ! Accumulated daily Held-Suarez northward-wind tendency
+        logical :: vtend_hs_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: ustr_sfc_accum ! Accumulated daily area-weighted surface eastward stress diagnostic
+        logical :: ustr_sfc_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: vstr_sfc_accum ! Accumulated daily area-weighted surface northward stress diagnostic
+        logical :: vstr_sfc_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: cloud_cover_accum ! Accumulated daily total cloud-cover diagnostic
+        logical :: cloud_cover_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: stratiform_cloud_cover_accum ! Accumulated daily stratiform cloud-cover diagnostic
+        logical :: stratiform_cloud_cover_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: total_cloud_top_pressure_accum ! Accumulated daily total cloud-top pressure diagnostic
+        logical :: total_cloud_top_pressure_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: total_cloud_top_count ! Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        logical :: total_cloud_top_count_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: conv_cloud_top_pressure_accum ! Accumulated daily convective cloud-top pressure diagnostic
+        logical :: conv_cloud_top_pressure_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: conv_cloud_top_count ! Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        logical :: conv_cloud_top_count_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: column_water_vapor_accum ! Accumulated daily column water vapor diagnostic
+        logical :: column_water_vapor_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: precip_accum ! Accumulated daily total precipitation diagnostic
+        logical :: precip_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: evap_accum ! Accumulated daily surface evaporation diagnostic
+        logical :: evap_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_down_accum ! Accumulated daily incoming top-of-atmosphere shortwave radiation
+        logical :: toa_sw_down_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_up_accum ! Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        logical :: toa_sw_up_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_net_accum ! Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        logical :: toa_sw_net_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: olr_accum ! Accumulated daily outgoing longwave radiation at the top of atmosphere
+        logical :: olr_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lh_flux_accum ! Accumulated daily upward latent heat flux at the surface
+        logical :: surface_lh_flux_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sh_flux_accum ! Accumulated daily upward sensible heat flux at the surface
+        logical :: surface_sh_flux_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_down_accum ! Accumulated daily downward shortwave radiation at the surface
+        logical :: surface_sw_down_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_up_accum ! Accumulated daily upward shortwave radiation at the surface
+        logical :: surface_sw_up_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_net_accum ! Accumulated daily net shortwave radiation at the surface (downward positive)
+        logical :: surface_sw_net_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_down_accum ! Accumulated daily downward longwave radiation at the surface
+        logical :: surface_lw_down_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_up_accum ! Accumulated daily upward longwave radiation at the surface
+        logical :: surface_lw_up_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_net_accum ! Accumulated daily net longwave radiation at the surface (downward positive)
+        logical :: surface_lw_net_accum_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_dyn_mean ! Daily-mean dynamical temperature tendency
+        logical :: ttend_dyn_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_phy_mean ! Daily-mean physical temperature tendency
+        logical :: ttend_phy_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_cnv_mean ! Daily-mean convective temperature tendency
+        logical :: ttend_cnv_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_lsc_mean ! Daily-mean large-scale condensation temperature tendency
+        logical :: ttend_lsc_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_sw_mean ! Daily-mean shortwave-radiative temperature tendency
+        logical :: ttend_sw_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_lw_mean ! Daily-mean longwave-radiative temperature tendency
+        logical :: ttend_lw_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_pbl_mean ! Daily-mean boundary-layer and surface-flux temperature tendency
+        logical :: ttend_pbl_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: ttend_hs_mean ! Daily-mean Held-Suarez temperature tendency
+        logical :: ttend_hs_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_dyn_mean ! Daily-mean dynamical specific humidity tendency
+        logical :: qtend_dyn_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_phy_mean ! Daily-mean physical specific humidity tendency
+        logical :: qtend_phy_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_cnv_mean ! Daily-mean convective specific humidity tendency
+        logical :: qtend_cnv_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_lsc_mean ! Daily-mean large-scale-condensation specific humidity tendency
+        logical :: qtend_lsc_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: qtend_pbl_mean ! Daily-mean boundary-layer and surface-flux specific humidity tendency
+        logical :: qtend_pbl_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_dyn_mean ! Daily-mean dynamical eastward-wind tendency
+        logical :: utend_dyn_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_dyn_mean ! Daily-mean dynamical northward-wind tendency
+        logical :: vtend_dyn_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_phy_mean ! Daily-mean physical eastward-wind tendency
+        logical :: utend_phy_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_phy_mean ! Daily-mean physical northward-wind tendency
+        logical :: vtend_phy_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_pbl_mean ! Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        logical :: utend_pbl_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_pbl_mean ! Daily-mean boundary-layer and surface-flux northward-wind tendency
+        logical :: vtend_pbl_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_gwd_mean ! Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        logical :: utend_gwd_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_gwd_mean ! Daily-mean orographic gravity-wave-drag northward-wind tendency
+        logical :: vtend_gwd_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: utend_hs_mean ! Daily-mean Held-Suarez eastward-wind tendency
+        logical :: utend_hs_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :, :)  :: vtend_hs_mean ! Daily-mean Held-Suarez northward-wind tendency
+        logical :: vtend_hs_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: ustr_sfc_mean ! Daily-mean area-weighted surface eastward stress diagnostic
+        logical :: ustr_sfc_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: vstr_sfc_mean ! Daily-mean area-weighted surface northward stress diagnostic
+        logical :: vstr_sfc_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: cloud_cover_mean ! Daily-mean total cloud cover
+        logical :: cloud_cover_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: stratiform_cloud_cover_mean ! Daily-mean stratiform cloud cover
+        logical :: stratiform_cloud_cover_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: total_cloud_top_pressure_mean ! Daily-mean total cloud-top pressure
+        logical :: total_cloud_top_pressure_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: conv_cloud_top_pressure_mean ! Daily-mean convective cloud-top pressure
+        logical :: conv_cloud_top_pressure_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: column_water_vapor_mean ! Daily-mean column water vapor
+        logical :: column_water_vapor_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: precip_mean ! Daily total precipitation
+        logical :: precip_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: evap_mean ! Daily total evaporation
+        logical :: evap_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_down_mean ! Daily-mean incoming top-of-atmosphere shortwave radiation
+        logical :: toa_sw_down_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_up_mean ! Daily-mean outgoing top-of-atmosphere shortwave radiation
+        logical :: toa_sw_up_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: toa_sw_net_mean ! Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        logical :: toa_sw_net_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: olr_mean ! Daily-mean outgoing longwave radiation at the top of atmosphere
+        logical :: olr_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lh_flux_mean ! Daily-mean upward latent heat flux at the surface
+        logical :: surface_lh_flux_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sh_flux_mean ! Daily-mean upward sensible heat flux at the surface
+        logical :: surface_sh_flux_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_down_mean ! Daily-mean downward shortwave radiation at the surface
+        logical :: surface_sw_down_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_up_mean ! Daily-mean upward shortwave radiation at the surface
+        logical :: surface_sw_up_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_sw_net_mean ! Daily-mean net shortwave radiation at the surface (downward positive)
+        logical :: surface_sw_net_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_down_mean ! Daily-mean downward longwave radiation at the surface
+        logical :: surface_lw_down_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_up_mean ! Daily-mean upward longwave radiation at the surface
+        logical :: surface_lw_up_mean_initialized = .false.
+
+        real(8), allocatable, dimension(:, :)  :: surface_lw_net_mean ! Daily-mean net longwave radiation at the surface (downward positive)
+        logical :: surface_lw_net_mean_initialized = .false.
+
         real(8), allocatable, dimension(:, :)  :: precnv ! Convective precipitation, total
         logical :: precnv_initialized = .false.
 
@@ -339,6 +609,8 @@ module model_state
 
 
         integer :: current_step ! Current model step.
+        integer :: ttend_daily_count ! Number of time steps accumulated in the current daily tendency mean.
+        integer :: cloud_daily_count ! Number of radiation-step samples accumulated in the current daily cloud diagnostics mean.
         logical :: increase_co2 !  Flag for CO2 optical thickness increase
         logical :: compute_shortwave ! Flag for shortwave radiation routine (turned on and off in main loop depending on the value of nstrad)
         logical :: held_suarez_mode ! Flag for Held-Suarez dry-physics forcing
@@ -351,6 +623,11 @@ module model_state
         real(8) :: hs_tau_s_days ! Held-Suarez boundary-layer relaxation time in days
         real(8) :: hs_tau_f_days ! Held-Suarez Rayleigh-drag time in days
         real(8) :: hs_min_pressure_ratio ! Held-Suarez minimum pressure ratio used in log(p/p0)
+        logical :: orographic_gwd_enabled ! Flag for the optional orographic gravity-wave-drag scheme
+        real(8) :: gwd_time_scale_days ! Reference drag time scale for the optional orographic gravity-wave-drag scheme
+        real(8) :: gwd_oro_threshold_m ! Orography threshold for the optional orographic gravity-wave-drag scheme
+        real(8) :: gwd_oro_scale_m ! Orography scale height used to saturate the optional orographic gravity-wave-drag scheme
+        real(8) :: gwd_launch_sigma ! Sigma level above which the optional orographic gravity-wave-drag profile is applied
         real(8) :: air_absortivity_co2 ! Absorptivity of air in CO2 band
         logical :: land_coupling_flag ! Flag for land-coupling (0: off, 1: on)
         logical :: sst_anomaly_coupling_flag ! Weight for obs. SST anomaly in coupled runs
@@ -429,6 +706,366 @@ contains
         allocate( state%ps_grid(ix, il) ) ! surface_air_pressure
         state%ps_grid_initialized = .true.
         state%ps_grid=0
+
+        allocate( state%ttend_dyn_accum(ix, il, kx) ) ! Accumulated daily dynamical temperature tendency
+        state%ttend_dyn_accum_initialized = .true.
+        state%ttend_dyn_accum=0
+
+        allocate( state%ttend_phy_accum(ix, il, kx) ) ! Accumulated daily physical temperature tendency
+        state%ttend_phy_accum_initialized = .true.
+        state%ttend_phy_accum=0
+
+        allocate( state%ttend_cnv_accum(ix, il, kx) ) ! Accumulated daily convective temperature tendency
+        state%ttend_cnv_accum_initialized = .true.
+        state%ttend_cnv_accum=0
+
+        allocate( state%ttend_lsc_accum(ix, il, kx) ) ! Accumulated daily large-scale condensation temperature tendency
+        state%ttend_lsc_accum_initialized = .true.
+        state%ttend_lsc_accum=0
+
+        allocate( state%ttend_sw_accum(ix, il, kx) ) ! Accumulated daily shortwave-radiative temperature tendency
+        state%ttend_sw_accum_initialized = .true.
+        state%ttend_sw_accum=0
+
+        allocate( state%ttend_lw_accum(ix, il, kx) ) ! Accumulated daily longwave-radiative temperature tendency
+        state%ttend_lw_accum_initialized = .true.
+        state%ttend_lw_accum=0
+
+        allocate( state%ttend_pbl_accum(ix, il, kx) ) ! Accumulated daily boundary-layer and surface-flux temperature tendency
+        state%ttend_pbl_accum_initialized = .true.
+        state%ttend_pbl_accum=0
+
+        allocate( state%ttend_hs_accum(ix, il, kx) ) ! Accumulated daily Held-Suarez temperature tendency
+        state%ttend_hs_accum_initialized = .true.
+        state%ttend_hs_accum=0
+
+        allocate( state%qtend_dyn_accum(ix, il, kx) ) ! Accumulated daily dynamical specific humidity tendency
+        state%qtend_dyn_accum_initialized = .true.
+        state%qtend_dyn_accum=0
+
+        allocate( state%qtend_phy_accum(ix, il, kx) ) ! Accumulated daily physical specific humidity tendency
+        state%qtend_phy_accum_initialized = .true.
+        state%qtend_phy_accum=0
+
+        allocate( state%qtend_cnv_accum(ix, il, kx) ) ! Accumulated daily convective specific humidity tendency
+        state%qtend_cnv_accum_initialized = .true.
+        state%qtend_cnv_accum=0
+
+        allocate( state%qtend_lsc_accum(ix, il, kx) ) ! Accumulated daily large-scale-condensation specific humidity tendency
+        state%qtend_lsc_accum_initialized = .true.
+        state%qtend_lsc_accum=0
+
+        allocate( state%qtend_pbl_accum(ix, il, kx) ) ! Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        state%qtend_pbl_accum_initialized = .true.
+        state%qtend_pbl_accum=0
+
+        allocate( state%utend_dyn_accum(ix, il, kx) ) ! Accumulated daily dynamical eastward-wind tendency
+        state%utend_dyn_accum_initialized = .true.
+        state%utend_dyn_accum=0
+
+        allocate( state%vtend_dyn_accum(ix, il, kx) ) ! Accumulated daily dynamical northward-wind tendency
+        state%vtend_dyn_accum_initialized = .true.
+        state%vtend_dyn_accum=0
+
+        allocate( state%utend_phy_accum(ix, il, kx) ) ! Accumulated daily physical eastward-wind tendency
+        state%utend_phy_accum_initialized = .true.
+        state%utend_phy_accum=0
+
+        allocate( state%vtend_phy_accum(ix, il, kx) ) ! Accumulated daily physical northward-wind tendency
+        state%vtend_phy_accum_initialized = .true.
+        state%vtend_phy_accum=0
+
+        allocate( state%utend_pbl_accum(ix, il, kx) ) ! Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        state%utend_pbl_accum_initialized = .true.
+        state%utend_pbl_accum=0
+
+        allocate( state%vtend_pbl_accum(ix, il, kx) ) ! Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        state%vtend_pbl_accum_initialized = .true.
+        state%vtend_pbl_accum=0
+
+        allocate( state%utend_gwd_accum(ix, il, kx) ) ! Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        state%utend_gwd_accum_initialized = .true.
+        state%utend_gwd_accum=0
+
+        allocate( state%vtend_gwd_accum(ix, il, kx) ) ! Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        state%vtend_gwd_accum_initialized = .true.
+        state%vtend_gwd_accum=0
+
+        allocate( state%utend_hs_accum(ix, il, kx) ) ! Accumulated daily Held-Suarez eastward-wind tendency
+        state%utend_hs_accum_initialized = .true.
+        state%utend_hs_accum=0
+
+        allocate( state%vtend_hs_accum(ix, il, kx) ) ! Accumulated daily Held-Suarez northward-wind tendency
+        state%vtend_hs_accum_initialized = .true.
+        state%vtend_hs_accum=0
+
+        allocate( state%ustr_sfc_accum(ix, il) ) ! Accumulated daily area-weighted surface eastward stress diagnostic
+        state%ustr_sfc_accum_initialized = .true.
+        state%ustr_sfc_accum=0
+
+        allocate( state%vstr_sfc_accum(ix, il) ) ! Accumulated daily area-weighted surface northward stress diagnostic
+        state%vstr_sfc_accum_initialized = .true.
+        state%vstr_sfc_accum=0
+
+        allocate( state%cloud_cover_accum(ix, il) ) ! Accumulated daily total cloud-cover diagnostic
+        state%cloud_cover_accum_initialized = .true.
+        state%cloud_cover_accum=0
+
+        allocate( state%stratiform_cloud_cover_accum(ix, il) ) ! Accumulated daily stratiform cloud-cover diagnostic
+        state%stratiform_cloud_cover_accum_initialized = .true.
+        state%stratiform_cloud_cover_accum=0
+
+        allocate( state%total_cloud_top_pressure_accum(ix, il) ) ! Accumulated daily total cloud-top pressure diagnostic
+        state%total_cloud_top_pressure_accum_initialized = .true.
+        state%total_cloud_top_pressure_accum=0
+
+        allocate( state%total_cloud_top_count(ix, il) ) ! Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        state%total_cloud_top_count_initialized = .true.
+        state%total_cloud_top_count=0
+
+        allocate( state%conv_cloud_top_pressure_accum(ix, il) ) ! Accumulated daily convective cloud-top pressure diagnostic
+        state%conv_cloud_top_pressure_accum_initialized = .true.
+        state%conv_cloud_top_pressure_accum=0
+
+        allocate( state%conv_cloud_top_count(ix, il) ) ! Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        state%conv_cloud_top_count_initialized = .true.
+        state%conv_cloud_top_count=0
+
+        allocate( state%column_water_vapor_accum(ix, il) ) ! Accumulated daily column water vapor diagnostic
+        state%column_water_vapor_accum_initialized = .true.
+        state%column_water_vapor_accum=0
+
+        allocate( state%precip_accum(ix, il) ) ! Accumulated daily total precipitation diagnostic
+        state%precip_accum_initialized = .true.
+        state%precip_accum=0
+
+        allocate( state%evap_accum(ix, il) ) ! Accumulated daily surface evaporation diagnostic
+        state%evap_accum_initialized = .true.
+        state%evap_accum=0
+
+        allocate( state%toa_sw_down_accum(ix, il) ) ! Accumulated daily incoming top-of-atmosphere shortwave radiation
+        state%toa_sw_down_accum_initialized = .true.
+        state%toa_sw_down_accum=0
+
+        allocate( state%toa_sw_up_accum(ix, il) ) ! Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        state%toa_sw_up_accum_initialized = .true.
+        state%toa_sw_up_accum=0
+
+        allocate( state%toa_sw_net_accum(ix, il) ) ! Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        state%toa_sw_net_accum_initialized = .true.
+        state%toa_sw_net_accum=0
+
+        allocate( state%olr_accum(ix, il) ) ! Accumulated daily outgoing longwave radiation at the top of atmosphere
+        state%olr_accum_initialized = .true.
+        state%olr_accum=0
+
+        allocate( state%surface_lh_flux_accum(ix, il) ) ! Accumulated daily upward latent heat flux at the surface
+        state%surface_lh_flux_accum_initialized = .true.
+        state%surface_lh_flux_accum=0
+
+        allocate( state%surface_sh_flux_accum(ix, il) ) ! Accumulated daily upward sensible heat flux at the surface
+        state%surface_sh_flux_accum_initialized = .true.
+        state%surface_sh_flux_accum=0
+
+        allocate( state%surface_sw_down_accum(ix, il) ) ! Accumulated daily downward shortwave radiation at the surface
+        state%surface_sw_down_accum_initialized = .true.
+        state%surface_sw_down_accum=0
+
+        allocate( state%surface_sw_up_accum(ix, il) ) ! Accumulated daily upward shortwave radiation at the surface
+        state%surface_sw_up_accum_initialized = .true.
+        state%surface_sw_up_accum=0
+
+        allocate( state%surface_sw_net_accum(ix, il) ) ! Accumulated daily net shortwave radiation at the surface (downward positive)
+        state%surface_sw_net_accum_initialized = .true.
+        state%surface_sw_net_accum=0
+
+        allocate( state%surface_lw_down_accum(ix, il) ) ! Accumulated daily downward longwave radiation at the surface
+        state%surface_lw_down_accum_initialized = .true.
+        state%surface_lw_down_accum=0
+
+        allocate( state%surface_lw_up_accum(ix, il) ) ! Accumulated daily upward longwave radiation at the surface
+        state%surface_lw_up_accum_initialized = .true.
+        state%surface_lw_up_accum=0
+
+        allocate( state%surface_lw_net_accum(ix, il) ) ! Accumulated daily net longwave radiation at the surface (downward positive)
+        state%surface_lw_net_accum_initialized = .true.
+        state%surface_lw_net_accum=0
+
+        allocate( state%ttend_dyn_mean(ix, il, kx) ) ! Daily-mean dynamical temperature tendency
+        state%ttend_dyn_mean_initialized = .true.
+        state%ttend_dyn_mean=0
+
+        allocate( state%ttend_phy_mean(ix, il, kx) ) ! Daily-mean physical temperature tendency
+        state%ttend_phy_mean_initialized = .true.
+        state%ttend_phy_mean=0
+
+        allocate( state%ttend_cnv_mean(ix, il, kx) ) ! Daily-mean convective temperature tendency
+        state%ttend_cnv_mean_initialized = .true.
+        state%ttend_cnv_mean=0
+
+        allocate( state%ttend_lsc_mean(ix, il, kx) ) ! Daily-mean large-scale condensation temperature tendency
+        state%ttend_lsc_mean_initialized = .true.
+        state%ttend_lsc_mean=0
+
+        allocate( state%ttend_sw_mean(ix, il, kx) ) ! Daily-mean shortwave-radiative temperature tendency
+        state%ttend_sw_mean_initialized = .true.
+        state%ttend_sw_mean=0
+
+        allocate( state%ttend_lw_mean(ix, il, kx) ) ! Daily-mean longwave-radiative temperature tendency
+        state%ttend_lw_mean_initialized = .true.
+        state%ttend_lw_mean=0
+
+        allocate( state%ttend_pbl_mean(ix, il, kx) ) ! Daily-mean boundary-layer and surface-flux temperature tendency
+        state%ttend_pbl_mean_initialized = .true.
+        state%ttend_pbl_mean=0
+
+        allocate( state%ttend_hs_mean(ix, il, kx) ) ! Daily-mean Held-Suarez temperature tendency
+        state%ttend_hs_mean_initialized = .true.
+        state%ttend_hs_mean=0
+
+        allocate( state%qtend_dyn_mean(ix, il, kx) ) ! Daily-mean dynamical specific humidity tendency
+        state%qtend_dyn_mean_initialized = .true.
+        state%qtend_dyn_mean=0
+
+        allocate( state%qtend_phy_mean(ix, il, kx) ) ! Daily-mean physical specific humidity tendency
+        state%qtend_phy_mean_initialized = .true.
+        state%qtend_phy_mean=0
+
+        allocate( state%qtend_cnv_mean(ix, il, kx) ) ! Daily-mean convective specific humidity tendency
+        state%qtend_cnv_mean_initialized = .true.
+        state%qtend_cnv_mean=0
+
+        allocate( state%qtend_lsc_mean(ix, il, kx) ) ! Daily-mean large-scale-condensation specific humidity tendency
+        state%qtend_lsc_mean_initialized = .true.
+        state%qtend_lsc_mean=0
+
+        allocate( state%qtend_pbl_mean(ix, il, kx) ) ! Daily-mean boundary-layer and surface-flux specific humidity tendency
+        state%qtend_pbl_mean_initialized = .true.
+        state%qtend_pbl_mean=0
+
+        allocate( state%utend_dyn_mean(ix, il, kx) ) ! Daily-mean dynamical eastward-wind tendency
+        state%utend_dyn_mean_initialized = .true.
+        state%utend_dyn_mean=0
+
+        allocate( state%vtend_dyn_mean(ix, il, kx) ) ! Daily-mean dynamical northward-wind tendency
+        state%vtend_dyn_mean_initialized = .true.
+        state%vtend_dyn_mean=0
+
+        allocate( state%utend_phy_mean(ix, il, kx) ) ! Daily-mean physical eastward-wind tendency
+        state%utend_phy_mean_initialized = .true.
+        state%utend_phy_mean=0
+
+        allocate( state%vtend_phy_mean(ix, il, kx) ) ! Daily-mean physical northward-wind tendency
+        state%vtend_phy_mean_initialized = .true.
+        state%vtend_phy_mean=0
+
+        allocate( state%utend_pbl_mean(ix, il, kx) ) ! Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        state%utend_pbl_mean_initialized = .true.
+        state%utend_pbl_mean=0
+
+        allocate( state%vtend_pbl_mean(ix, il, kx) ) ! Daily-mean boundary-layer and surface-flux northward-wind tendency
+        state%vtend_pbl_mean_initialized = .true.
+        state%vtend_pbl_mean=0
+
+        allocate( state%utend_gwd_mean(ix, il, kx) ) ! Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        state%utend_gwd_mean_initialized = .true.
+        state%utend_gwd_mean=0
+
+        allocate( state%vtend_gwd_mean(ix, il, kx) ) ! Daily-mean orographic gravity-wave-drag northward-wind tendency
+        state%vtend_gwd_mean_initialized = .true.
+        state%vtend_gwd_mean=0
+
+        allocate( state%utend_hs_mean(ix, il, kx) ) ! Daily-mean Held-Suarez eastward-wind tendency
+        state%utend_hs_mean_initialized = .true.
+        state%utend_hs_mean=0
+
+        allocate( state%vtend_hs_mean(ix, il, kx) ) ! Daily-mean Held-Suarez northward-wind tendency
+        state%vtend_hs_mean_initialized = .true.
+        state%vtend_hs_mean=0
+
+        allocate( state%ustr_sfc_mean(ix, il) ) ! Daily-mean area-weighted surface eastward stress diagnostic
+        state%ustr_sfc_mean_initialized = .true.
+        state%ustr_sfc_mean=0
+
+        allocate( state%vstr_sfc_mean(ix, il) ) ! Daily-mean area-weighted surface northward stress diagnostic
+        state%vstr_sfc_mean_initialized = .true.
+        state%vstr_sfc_mean=0
+
+        allocate( state%cloud_cover_mean(ix, il) ) ! Daily-mean total cloud cover
+        state%cloud_cover_mean_initialized = .true.
+        state%cloud_cover_mean=0
+
+        allocate( state%stratiform_cloud_cover_mean(ix, il) ) ! Daily-mean stratiform cloud cover
+        state%stratiform_cloud_cover_mean_initialized = .true.
+        state%stratiform_cloud_cover_mean=0
+
+        allocate( state%total_cloud_top_pressure_mean(ix, il) ) ! Daily-mean total cloud-top pressure
+        state%total_cloud_top_pressure_mean_initialized = .true.
+        state%total_cloud_top_pressure_mean=0
+
+        allocate( state%conv_cloud_top_pressure_mean(ix, il) ) ! Daily-mean convective cloud-top pressure
+        state%conv_cloud_top_pressure_mean_initialized = .true.
+        state%conv_cloud_top_pressure_mean=0
+
+        allocate( state%column_water_vapor_mean(ix, il) ) ! Daily-mean column water vapor
+        state%column_water_vapor_mean_initialized = .true.
+        state%column_water_vapor_mean=0
+
+        allocate( state%precip_mean(ix, il) ) ! Daily total precipitation
+        state%precip_mean_initialized = .true.
+        state%precip_mean=0
+
+        allocate( state%evap_mean(ix, il) ) ! Daily total evaporation
+        state%evap_mean_initialized = .true.
+        state%evap_mean=0
+
+        allocate( state%toa_sw_down_mean(ix, il) ) ! Daily-mean incoming top-of-atmosphere shortwave radiation
+        state%toa_sw_down_mean_initialized = .true.
+        state%toa_sw_down_mean=0
+
+        allocate( state%toa_sw_up_mean(ix, il) ) ! Daily-mean outgoing top-of-atmosphere shortwave radiation
+        state%toa_sw_up_mean_initialized = .true.
+        state%toa_sw_up_mean=0
+
+        allocate( state%toa_sw_net_mean(ix, il) ) ! Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        state%toa_sw_net_mean_initialized = .true.
+        state%toa_sw_net_mean=0
+
+        allocate( state%olr_mean(ix, il) ) ! Daily-mean outgoing longwave radiation at the top of atmosphere
+        state%olr_mean_initialized = .true.
+        state%olr_mean=0
+
+        allocate( state%surface_lh_flux_mean(ix, il) ) ! Daily-mean upward latent heat flux at the surface
+        state%surface_lh_flux_mean_initialized = .true.
+        state%surface_lh_flux_mean=0
+
+        allocate( state%surface_sh_flux_mean(ix, il) ) ! Daily-mean upward sensible heat flux at the surface
+        state%surface_sh_flux_mean_initialized = .true.
+        state%surface_sh_flux_mean=0
+
+        allocate( state%surface_sw_down_mean(ix, il) ) ! Daily-mean downward shortwave radiation at the surface
+        state%surface_sw_down_mean_initialized = .true.
+        state%surface_sw_down_mean=0
+
+        allocate( state%surface_sw_up_mean(ix, il) ) ! Daily-mean upward shortwave radiation at the surface
+        state%surface_sw_up_mean_initialized = .true.
+        state%surface_sw_up_mean=0
+
+        allocate( state%surface_sw_net_mean(ix, il) ) ! Daily-mean net shortwave radiation at the surface (downward positive)
+        state%surface_sw_net_mean_initialized = .true.
+        state%surface_sw_net_mean=0
+
+        allocate( state%surface_lw_down_mean(ix, il) ) ! Daily-mean downward longwave radiation at the surface
+        state%surface_lw_down_mean_initialized = .true.
+        state%surface_lw_down_mean=0
+
+        allocate( state%surface_lw_up_mean(ix, il) ) ! Daily-mean upward longwave radiation at the surface
+        state%surface_lw_up_mean_initialized = .true.
+        state%surface_lw_up_mean=0
+
+        allocate( state%surface_lw_net_mean(ix, il) ) ! Daily-mean net longwave radiation at the surface (downward positive)
+        state%surface_lw_net_mean_initialized = .true.
+        state%surface_lw_net_mean=0
 
         allocate( state%precnv(ix, il) ) ! Convective precipitation, total
         state%precnv_initialized = .true.
@@ -798,6 +1435,11 @@ contains
         state%hs_tau_s_days= 4.0
         state%hs_tau_f_days= 1.0
         state%hs_min_pressure_ratio= 1.0e-4
+        state%orographic_gwd_enabled= .false.
+        state%gwd_time_scale_days= 10.0
+        state%gwd_oro_threshold_m= 500.0
+        state%gwd_oro_scale_m= 1500.0
+        state%gwd_launch_sigma= 0.7
         state%air_absortivity_co2= 6.0
         state%land_coupling_flag= .true.
         state%sst_anomaly_coupling_flag= .true.
@@ -863,6 +1505,276 @@ contains
 
         if( allocated(state%ps_grid) ) deallocate( state%ps_grid ) ! surface_air_pressure
         state%ps_grid_initialized = .false.
+
+        if( allocated(state%ttend_dyn_accum) ) deallocate( state%ttend_dyn_accum ) ! Accumulated daily dynamical temperature tendency
+        state%ttend_dyn_accum_initialized = .false.
+
+        if( allocated(state%ttend_phy_accum) ) deallocate( state%ttend_phy_accum ) ! Accumulated daily physical temperature tendency
+        state%ttend_phy_accum_initialized = .false.
+
+        if( allocated(state%ttend_cnv_accum) ) deallocate( state%ttend_cnv_accum ) ! Accumulated daily convective temperature tendency
+        state%ttend_cnv_accum_initialized = .false.
+
+        if( allocated(state%ttend_lsc_accum) ) deallocate( state%ttend_lsc_accum ) ! Accumulated daily large-scale condensation temperature tendency
+        state%ttend_lsc_accum_initialized = .false.
+
+        if( allocated(state%ttend_sw_accum) ) deallocate( state%ttend_sw_accum ) ! Accumulated daily shortwave-radiative temperature tendency
+        state%ttend_sw_accum_initialized = .false.
+
+        if( allocated(state%ttend_lw_accum) ) deallocate( state%ttend_lw_accum ) ! Accumulated daily longwave-radiative temperature tendency
+        state%ttend_lw_accum_initialized = .false.
+
+        if( allocated(state%ttend_pbl_accum) ) deallocate( state%ttend_pbl_accum ) ! Accumulated daily boundary-layer and surface-flux temperature tendency
+        state%ttend_pbl_accum_initialized = .false.
+
+        if( allocated(state%ttend_hs_accum) ) deallocate( state%ttend_hs_accum ) ! Accumulated daily Held-Suarez temperature tendency
+        state%ttend_hs_accum_initialized = .false.
+
+        if( allocated(state%qtend_dyn_accum) ) deallocate( state%qtend_dyn_accum ) ! Accumulated daily dynamical specific humidity tendency
+        state%qtend_dyn_accum_initialized = .false.
+
+        if( allocated(state%qtend_phy_accum) ) deallocate( state%qtend_phy_accum ) ! Accumulated daily physical specific humidity tendency
+        state%qtend_phy_accum_initialized = .false.
+
+        if( allocated(state%qtend_cnv_accum) ) deallocate( state%qtend_cnv_accum ) ! Accumulated daily convective specific humidity tendency
+        state%qtend_cnv_accum_initialized = .false.
+
+        if( allocated(state%qtend_lsc_accum) ) deallocate( state%qtend_lsc_accum ) ! Accumulated daily large-scale-condensation specific humidity tendency
+        state%qtend_lsc_accum_initialized = .false.
+
+        if( allocated(state%qtend_pbl_accum) ) deallocate( state%qtend_pbl_accum ) ! Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        state%qtend_pbl_accum_initialized = .false.
+
+        if( allocated(state%utend_dyn_accum) ) deallocate( state%utend_dyn_accum ) ! Accumulated daily dynamical eastward-wind tendency
+        state%utend_dyn_accum_initialized = .false.
+
+        if( allocated(state%vtend_dyn_accum) ) deallocate( state%vtend_dyn_accum ) ! Accumulated daily dynamical northward-wind tendency
+        state%vtend_dyn_accum_initialized = .false.
+
+        if( allocated(state%utend_phy_accum) ) deallocate( state%utend_phy_accum ) ! Accumulated daily physical eastward-wind tendency
+        state%utend_phy_accum_initialized = .false.
+
+        if( allocated(state%vtend_phy_accum) ) deallocate( state%vtend_phy_accum ) ! Accumulated daily physical northward-wind tendency
+        state%vtend_phy_accum_initialized = .false.
+
+        if( allocated(state%utend_pbl_accum) ) deallocate( state%utend_pbl_accum ) ! Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        state%utend_pbl_accum_initialized = .false.
+
+        if( allocated(state%vtend_pbl_accum) ) deallocate( state%vtend_pbl_accum ) ! Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        state%vtend_pbl_accum_initialized = .false.
+
+        if( allocated(state%utend_gwd_accum) ) deallocate( state%utend_gwd_accum ) ! Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        state%utend_gwd_accum_initialized = .false.
+
+        if( allocated(state%vtend_gwd_accum) ) deallocate( state%vtend_gwd_accum ) ! Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        state%vtend_gwd_accum_initialized = .false.
+
+        if( allocated(state%utend_hs_accum) ) deallocate( state%utend_hs_accum ) ! Accumulated daily Held-Suarez eastward-wind tendency
+        state%utend_hs_accum_initialized = .false.
+
+        if( allocated(state%vtend_hs_accum) ) deallocate( state%vtend_hs_accum ) ! Accumulated daily Held-Suarez northward-wind tendency
+        state%vtend_hs_accum_initialized = .false.
+
+        if( allocated(state%ustr_sfc_accum) ) deallocate( state%ustr_sfc_accum ) ! Accumulated daily area-weighted surface eastward stress diagnostic
+        state%ustr_sfc_accum_initialized = .false.
+
+        if( allocated(state%vstr_sfc_accum) ) deallocate( state%vstr_sfc_accum ) ! Accumulated daily area-weighted surface northward stress diagnostic
+        state%vstr_sfc_accum_initialized = .false.
+
+        if( allocated(state%cloud_cover_accum) ) deallocate( state%cloud_cover_accum ) ! Accumulated daily total cloud-cover diagnostic
+        state%cloud_cover_accum_initialized = .false.
+
+        if( allocated(state%stratiform_cloud_cover_accum) ) deallocate( state%stratiform_cloud_cover_accum ) ! Accumulated daily stratiform cloud-cover diagnostic
+        state%stratiform_cloud_cover_accum_initialized = .false.
+
+        if( allocated(state%total_cloud_top_pressure_accum) ) deallocate( state%total_cloud_top_pressure_accum ) ! Accumulated daily total cloud-top pressure diagnostic
+        state%total_cloud_top_pressure_accum_initialized = .false.
+
+        if( allocated(state%total_cloud_top_count) ) deallocate( state%total_cloud_top_count ) ! Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        state%total_cloud_top_count_initialized = .false.
+
+        if( allocated(state%conv_cloud_top_pressure_accum) ) deallocate( state%conv_cloud_top_pressure_accum ) ! Accumulated daily convective cloud-top pressure diagnostic
+        state%conv_cloud_top_pressure_accum_initialized = .false.
+
+        if( allocated(state%conv_cloud_top_count) ) deallocate( state%conv_cloud_top_count ) ! Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        state%conv_cloud_top_count_initialized = .false.
+
+        if( allocated(state%column_water_vapor_accum) ) deallocate( state%column_water_vapor_accum ) ! Accumulated daily column water vapor diagnostic
+        state%column_water_vapor_accum_initialized = .false.
+
+        if( allocated(state%precip_accum) ) deallocate( state%precip_accum ) ! Accumulated daily total precipitation diagnostic
+        state%precip_accum_initialized = .false.
+
+        if( allocated(state%evap_accum) ) deallocate( state%evap_accum ) ! Accumulated daily surface evaporation diagnostic
+        state%evap_accum_initialized = .false.
+
+        if( allocated(state%toa_sw_down_accum) ) deallocate( state%toa_sw_down_accum ) ! Accumulated daily incoming top-of-atmosphere shortwave radiation
+        state%toa_sw_down_accum_initialized = .false.
+
+        if( allocated(state%toa_sw_up_accum) ) deallocate( state%toa_sw_up_accum ) ! Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        state%toa_sw_up_accum_initialized = .false.
+
+        if( allocated(state%toa_sw_net_accum) ) deallocate( state%toa_sw_net_accum ) ! Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        state%toa_sw_net_accum_initialized = .false.
+
+        if( allocated(state%olr_accum) ) deallocate( state%olr_accum ) ! Accumulated daily outgoing longwave radiation at the top of atmosphere
+        state%olr_accum_initialized = .false.
+
+        if( allocated(state%surface_lh_flux_accum) ) deallocate( state%surface_lh_flux_accum ) ! Accumulated daily upward latent heat flux at the surface
+        state%surface_lh_flux_accum_initialized = .false.
+
+        if( allocated(state%surface_sh_flux_accum) ) deallocate( state%surface_sh_flux_accum ) ! Accumulated daily upward sensible heat flux at the surface
+        state%surface_sh_flux_accum_initialized = .false.
+
+        if( allocated(state%surface_sw_down_accum) ) deallocate( state%surface_sw_down_accum ) ! Accumulated daily downward shortwave radiation at the surface
+        state%surface_sw_down_accum_initialized = .false.
+
+        if( allocated(state%surface_sw_up_accum) ) deallocate( state%surface_sw_up_accum ) ! Accumulated daily upward shortwave radiation at the surface
+        state%surface_sw_up_accum_initialized = .false.
+
+        if( allocated(state%surface_sw_net_accum) ) deallocate( state%surface_sw_net_accum ) ! Accumulated daily net shortwave radiation at the surface (downward positive)
+        state%surface_sw_net_accum_initialized = .false.
+
+        if( allocated(state%surface_lw_down_accum) ) deallocate( state%surface_lw_down_accum ) ! Accumulated daily downward longwave radiation at the surface
+        state%surface_lw_down_accum_initialized = .false.
+
+        if( allocated(state%surface_lw_up_accum) ) deallocate( state%surface_lw_up_accum ) ! Accumulated daily upward longwave radiation at the surface
+        state%surface_lw_up_accum_initialized = .false.
+
+        if( allocated(state%surface_lw_net_accum) ) deallocate( state%surface_lw_net_accum ) ! Accumulated daily net longwave radiation at the surface (downward positive)
+        state%surface_lw_net_accum_initialized = .false.
+
+        if( allocated(state%ttend_dyn_mean) ) deallocate( state%ttend_dyn_mean ) ! Daily-mean dynamical temperature tendency
+        state%ttend_dyn_mean_initialized = .false.
+
+        if( allocated(state%ttend_phy_mean) ) deallocate( state%ttend_phy_mean ) ! Daily-mean physical temperature tendency
+        state%ttend_phy_mean_initialized = .false.
+
+        if( allocated(state%ttend_cnv_mean) ) deallocate( state%ttend_cnv_mean ) ! Daily-mean convective temperature tendency
+        state%ttend_cnv_mean_initialized = .false.
+
+        if( allocated(state%ttend_lsc_mean) ) deallocate( state%ttend_lsc_mean ) ! Daily-mean large-scale condensation temperature tendency
+        state%ttend_lsc_mean_initialized = .false.
+
+        if( allocated(state%ttend_sw_mean) ) deallocate( state%ttend_sw_mean ) ! Daily-mean shortwave-radiative temperature tendency
+        state%ttend_sw_mean_initialized = .false.
+
+        if( allocated(state%ttend_lw_mean) ) deallocate( state%ttend_lw_mean ) ! Daily-mean longwave-radiative temperature tendency
+        state%ttend_lw_mean_initialized = .false.
+
+        if( allocated(state%ttend_pbl_mean) ) deallocate( state%ttend_pbl_mean ) ! Daily-mean boundary-layer and surface-flux temperature tendency
+        state%ttend_pbl_mean_initialized = .false.
+
+        if( allocated(state%ttend_hs_mean) ) deallocate( state%ttend_hs_mean ) ! Daily-mean Held-Suarez temperature tendency
+        state%ttend_hs_mean_initialized = .false.
+
+        if( allocated(state%qtend_dyn_mean) ) deallocate( state%qtend_dyn_mean ) ! Daily-mean dynamical specific humidity tendency
+        state%qtend_dyn_mean_initialized = .false.
+
+        if( allocated(state%qtend_phy_mean) ) deallocate( state%qtend_phy_mean ) ! Daily-mean physical specific humidity tendency
+        state%qtend_phy_mean_initialized = .false.
+
+        if( allocated(state%qtend_cnv_mean) ) deallocate( state%qtend_cnv_mean ) ! Daily-mean convective specific humidity tendency
+        state%qtend_cnv_mean_initialized = .false.
+
+        if( allocated(state%qtend_lsc_mean) ) deallocate( state%qtend_lsc_mean ) ! Daily-mean large-scale-condensation specific humidity tendency
+        state%qtend_lsc_mean_initialized = .false.
+
+        if( allocated(state%qtend_pbl_mean) ) deallocate( state%qtend_pbl_mean ) ! Daily-mean boundary-layer and surface-flux specific humidity tendency
+        state%qtend_pbl_mean_initialized = .false.
+
+        if( allocated(state%utend_dyn_mean) ) deallocate( state%utend_dyn_mean ) ! Daily-mean dynamical eastward-wind tendency
+        state%utend_dyn_mean_initialized = .false.
+
+        if( allocated(state%vtend_dyn_mean) ) deallocate( state%vtend_dyn_mean ) ! Daily-mean dynamical northward-wind tendency
+        state%vtend_dyn_mean_initialized = .false.
+
+        if( allocated(state%utend_phy_mean) ) deallocate( state%utend_phy_mean ) ! Daily-mean physical eastward-wind tendency
+        state%utend_phy_mean_initialized = .false.
+
+        if( allocated(state%vtend_phy_mean) ) deallocate( state%vtend_phy_mean ) ! Daily-mean physical northward-wind tendency
+        state%vtend_phy_mean_initialized = .false.
+
+        if( allocated(state%utend_pbl_mean) ) deallocate( state%utend_pbl_mean ) ! Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        state%utend_pbl_mean_initialized = .false.
+
+        if( allocated(state%vtend_pbl_mean) ) deallocate( state%vtend_pbl_mean ) ! Daily-mean boundary-layer and surface-flux northward-wind tendency
+        state%vtend_pbl_mean_initialized = .false.
+
+        if( allocated(state%utend_gwd_mean) ) deallocate( state%utend_gwd_mean ) ! Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        state%utend_gwd_mean_initialized = .false.
+
+        if( allocated(state%vtend_gwd_mean) ) deallocate( state%vtend_gwd_mean ) ! Daily-mean orographic gravity-wave-drag northward-wind tendency
+        state%vtend_gwd_mean_initialized = .false.
+
+        if( allocated(state%utend_hs_mean) ) deallocate( state%utend_hs_mean ) ! Daily-mean Held-Suarez eastward-wind tendency
+        state%utend_hs_mean_initialized = .false.
+
+        if( allocated(state%vtend_hs_mean) ) deallocate( state%vtend_hs_mean ) ! Daily-mean Held-Suarez northward-wind tendency
+        state%vtend_hs_mean_initialized = .false.
+
+        if( allocated(state%ustr_sfc_mean) ) deallocate( state%ustr_sfc_mean ) ! Daily-mean area-weighted surface eastward stress diagnostic
+        state%ustr_sfc_mean_initialized = .false.
+
+        if( allocated(state%vstr_sfc_mean) ) deallocate( state%vstr_sfc_mean ) ! Daily-mean area-weighted surface northward stress diagnostic
+        state%vstr_sfc_mean_initialized = .false.
+
+        if( allocated(state%cloud_cover_mean) ) deallocate( state%cloud_cover_mean ) ! Daily-mean total cloud cover
+        state%cloud_cover_mean_initialized = .false.
+
+        if( allocated(state%stratiform_cloud_cover_mean) ) deallocate( state%stratiform_cloud_cover_mean ) ! Daily-mean stratiform cloud cover
+        state%stratiform_cloud_cover_mean_initialized = .false.
+
+        if( allocated(state%total_cloud_top_pressure_mean) ) deallocate( state%total_cloud_top_pressure_mean ) ! Daily-mean total cloud-top pressure
+        state%total_cloud_top_pressure_mean_initialized = .false.
+
+        if( allocated(state%conv_cloud_top_pressure_mean) ) deallocate( state%conv_cloud_top_pressure_mean ) ! Daily-mean convective cloud-top pressure
+        state%conv_cloud_top_pressure_mean_initialized = .false.
+
+        if( allocated(state%column_water_vapor_mean) ) deallocate( state%column_water_vapor_mean ) ! Daily-mean column water vapor
+        state%column_water_vapor_mean_initialized = .false.
+
+        if( allocated(state%precip_mean) ) deallocate( state%precip_mean ) ! Daily total precipitation
+        state%precip_mean_initialized = .false.
+
+        if( allocated(state%evap_mean) ) deallocate( state%evap_mean ) ! Daily total evaporation
+        state%evap_mean_initialized = .false.
+
+        if( allocated(state%toa_sw_down_mean) ) deallocate( state%toa_sw_down_mean ) ! Daily-mean incoming top-of-atmosphere shortwave radiation
+        state%toa_sw_down_mean_initialized = .false.
+
+        if( allocated(state%toa_sw_up_mean) ) deallocate( state%toa_sw_up_mean ) ! Daily-mean outgoing top-of-atmosphere shortwave radiation
+        state%toa_sw_up_mean_initialized = .false.
+
+        if( allocated(state%toa_sw_net_mean) ) deallocate( state%toa_sw_net_mean ) ! Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        state%toa_sw_net_mean_initialized = .false.
+
+        if( allocated(state%olr_mean) ) deallocate( state%olr_mean ) ! Daily-mean outgoing longwave radiation at the top of atmosphere
+        state%olr_mean_initialized = .false.
+
+        if( allocated(state%surface_lh_flux_mean) ) deallocate( state%surface_lh_flux_mean ) ! Daily-mean upward latent heat flux at the surface
+        state%surface_lh_flux_mean_initialized = .false.
+
+        if( allocated(state%surface_sh_flux_mean) ) deallocate( state%surface_sh_flux_mean ) ! Daily-mean upward sensible heat flux at the surface
+        state%surface_sh_flux_mean_initialized = .false.
+
+        if( allocated(state%surface_sw_down_mean) ) deallocate( state%surface_sw_down_mean ) ! Daily-mean downward shortwave radiation at the surface
+        state%surface_sw_down_mean_initialized = .false.
+
+        if( allocated(state%surface_sw_up_mean) ) deallocate( state%surface_sw_up_mean ) ! Daily-mean upward shortwave radiation at the surface
+        state%surface_sw_up_mean_initialized = .false.
+
+        if( allocated(state%surface_sw_net_mean) ) deallocate( state%surface_sw_net_mean ) ! Daily-mean net shortwave radiation at the surface (downward positive)
+        state%surface_sw_net_mean_initialized = .false.
+
+        if( allocated(state%surface_lw_down_mean) ) deallocate( state%surface_lw_down_mean ) ! Daily-mean downward longwave radiation at the surface
+        state%surface_lw_down_mean_initialized = .false.
+
+        if( allocated(state%surface_lw_up_mean) ) deallocate( state%surface_lw_up_mean ) ! Daily-mean upward longwave radiation at the surface
+        state%surface_lw_up_mean_initialized = .false.
+
+        if( allocated(state%surface_lw_net_mean) ) deallocate( state%surface_lw_net_mean ) ! Daily-mean net longwave radiation at the surface (downward positive)
+        state%surface_lw_net_mean_initialized = .false.
 
         if( allocated(state%precnv) ) deallocate( state%precnv ) ! Convective precipitation, total
         state%precnv_initialized = .false.

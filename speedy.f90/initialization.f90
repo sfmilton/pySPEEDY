@@ -20,6 +20,7 @@ contains
         use prognostics, only : initialize_prognostics
         use geopotential, only : initialize_geopotential
         use forcing, only : set_forcing
+        use physics, only : reset_daily_tendency_diagnostics
         use params, only : ix, il
         use error_codes, only: SUCCESS
 
@@ -89,6 +90,7 @@ contains
 
         ! Do the initial (2nd-order) time step, initialize the semi-implicit scheme
         call first_step(state)
+        call reset_daily_tendency_diagnostics(state)
 
         ! Initialize coordinates
         state%lev(:) = real(state%mod_geometry%fsg(:))

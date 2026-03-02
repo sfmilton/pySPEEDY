@@ -753,6 +753,3516 @@ contains
         endif
     end subroutine
 
+    subroutine get_ttend_dyn_accum(state_cnt, ttend_dyn_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical temperature tendency
+        real(8), intent(out) :: ttend_dyn_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_dyn_accum_out=state_ptr%p%ttend_dyn_accum
+    end subroutine
+
+    subroutine set_ttend_dyn_accum(state_cnt, ttend_dyn_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical temperature tendency
+        real(8), intent(in) :: ttend_dyn_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_dyn_accum=ttend_dyn_accum_in
+    end subroutine
+    
+    subroutine get_ttend_dyn_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily dynamical temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_dyn_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_dyn_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_phy_accum(state_cnt, ttend_phy_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical temperature tendency
+        real(8), intent(out) :: ttend_phy_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_phy_accum_out=state_ptr%p%ttend_phy_accum
+    end subroutine
+
+    subroutine set_ttend_phy_accum(state_cnt, ttend_phy_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical temperature tendency
+        real(8), intent(in) :: ttend_phy_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_phy_accum=ttend_phy_accum_in
+    end subroutine
+    
+    subroutine get_ttend_phy_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily physical temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_phy_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_phy_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_cnv_accum(state_cnt, ttend_cnv_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective temperature tendency
+        real(8), intent(out) :: ttend_cnv_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_cnv_accum_out=state_ptr%p%ttend_cnv_accum
+    end subroutine
+
+    subroutine set_ttend_cnv_accum(state_cnt, ttend_cnv_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective temperature tendency
+        real(8), intent(in) :: ttend_cnv_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_cnv_accum=ttend_cnv_accum_in
+    end subroutine
+    
+    subroutine get_ttend_cnv_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily convective temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_cnv_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_cnv_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_lsc_accum(state_cnt, ttend_lsc_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily large-scale condensation temperature tendency
+        real(8), intent(out) :: ttend_lsc_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_lsc_accum_out=state_ptr%p%ttend_lsc_accum
+    end subroutine
+
+    subroutine set_ttend_lsc_accum(state_cnt, ttend_lsc_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily large-scale condensation temperature tendency
+        real(8), intent(in) :: ttend_lsc_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_lsc_accum=ttend_lsc_accum_in
+    end subroutine
+    
+    subroutine get_ttend_lsc_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily large-scale condensation temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_lsc_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_lsc_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_sw_accum(state_cnt, ttend_sw_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily shortwave-radiative temperature tendency
+        real(8), intent(out) :: ttend_sw_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_sw_accum_out=state_ptr%p%ttend_sw_accum
+    end subroutine
+
+    subroutine set_ttend_sw_accum(state_cnt, ttend_sw_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily shortwave-radiative temperature tendency
+        real(8), intent(in) :: ttend_sw_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_sw_accum=ttend_sw_accum_in
+    end subroutine
+    
+    subroutine get_ttend_sw_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily shortwave-radiative temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_sw_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_sw_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_lw_accum(state_cnt, ttend_lw_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily longwave-radiative temperature tendency
+        real(8), intent(out) :: ttend_lw_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_lw_accum_out=state_ptr%p%ttend_lw_accum
+    end subroutine
+
+    subroutine set_ttend_lw_accum(state_cnt, ttend_lw_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily longwave-radiative temperature tendency
+        real(8), intent(in) :: ttend_lw_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_lw_accum=ttend_lw_accum_in
+    end subroutine
+    
+    subroutine get_ttend_lw_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily longwave-radiative temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_lw_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_lw_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_pbl_accum(state_cnt, ttend_pbl_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux temperature tendency
+        real(8), intent(out) :: ttend_pbl_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_pbl_accum_out=state_ptr%p%ttend_pbl_accum
+    end subroutine
+
+    subroutine set_ttend_pbl_accum(state_cnt, ttend_pbl_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux temperature tendency
+        real(8), intent(in) :: ttend_pbl_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_pbl_accum=ttend_pbl_accum_in
+    end subroutine
+    
+    subroutine get_ttend_pbl_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily boundary-layer and surface-flux temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_pbl_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_pbl_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_hs_accum(state_cnt, ttend_hs_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez temperature tendency
+        real(8), intent(out) :: ttend_hs_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_hs_accum_out=state_ptr%p%ttend_hs_accum
+    end subroutine
+
+    subroutine set_ttend_hs_accum(state_cnt, ttend_hs_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez temperature tendency
+        real(8), intent(in) :: ttend_hs_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_hs_accum=ttend_hs_accum_in
+    end subroutine
+    
+    subroutine get_ttend_hs_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily Held-Suarez temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_hs_accum_initialized) then
+            array_shape=shape(state_ptr%p%ttend_hs_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_dyn_accum(state_cnt, qtend_dyn_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical specific humidity tendency
+        real(8), intent(out) :: qtend_dyn_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_dyn_accum_out=state_ptr%p%qtend_dyn_accum
+    end subroutine
+
+    subroutine set_qtend_dyn_accum(state_cnt, qtend_dyn_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical specific humidity tendency
+        real(8), intent(in) :: qtend_dyn_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_dyn_accum=qtend_dyn_accum_in
+    end subroutine
+    
+    subroutine get_qtend_dyn_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily dynamical specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_dyn_accum_initialized) then
+            array_shape=shape(state_ptr%p%qtend_dyn_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_phy_accum(state_cnt, qtend_phy_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical specific humidity tendency
+        real(8), intent(out) :: qtend_phy_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_phy_accum_out=state_ptr%p%qtend_phy_accum
+    end subroutine
+
+    subroutine set_qtend_phy_accum(state_cnt, qtend_phy_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical specific humidity tendency
+        real(8), intent(in) :: qtend_phy_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_phy_accum=qtend_phy_accum_in
+    end subroutine
+    
+    subroutine get_qtend_phy_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily physical specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_phy_accum_initialized) then
+            array_shape=shape(state_ptr%p%qtend_phy_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_cnv_accum(state_cnt, qtend_cnv_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective specific humidity tendency
+        real(8), intent(out) :: qtend_cnv_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_cnv_accum_out=state_ptr%p%qtend_cnv_accum
+    end subroutine
+
+    subroutine set_qtend_cnv_accum(state_cnt, qtend_cnv_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective specific humidity tendency
+        real(8), intent(in) :: qtend_cnv_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_cnv_accum=qtend_cnv_accum_in
+    end subroutine
+    
+    subroutine get_qtend_cnv_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily convective specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_cnv_accum_initialized) then
+            array_shape=shape(state_ptr%p%qtend_cnv_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_lsc_accum(state_cnt, qtend_lsc_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily large-scale-condensation specific humidity tendency
+        real(8), intent(out) :: qtend_lsc_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_lsc_accum_out=state_ptr%p%qtend_lsc_accum
+    end subroutine
+
+    subroutine set_qtend_lsc_accum(state_cnt, qtend_lsc_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily large-scale-condensation specific humidity tendency
+        real(8), intent(in) :: qtend_lsc_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_lsc_accum=qtend_lsc_accum_in
+    end subroutine
+    
+    subroutine get_qtend_lsc_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily large-scale-condensation specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_lsc_accum_initialized) then
+            array_shape=shape(state_ptr%p%qtend_lsc_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_pbl_accum(state_cnt, qtend_pbl_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        real(8), intent(out) :: qtend_pbl_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_pbl_accum_out=state_ptr%p%qtend_pbl_accum
+    end subroutine
+
+    subroutine set_qtend_pbl_accum(state_cnt, qtend_pbl_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        real(8), intent(in) :: qtend_pbl_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_pbl_accum=qtend_pbl_accum_in
+    end subroutine
+    
+    subroutine get_qtend_pbl_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily boundary-layer and surface-flux specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_pbl_accum_initialized) then
+            array_shape=shape(state_ptr%p%qtend_pbl_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_dyn_accum(state_cnt, utend_dyn_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical eastward-wind tendency
+        real(8), intent(out) :: utend_dyn_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_dyn_accum_out=state_ptr%p%utend_dyn_accum
+    end subroutine
+
+    subroutine set_utend_dyn_accum(state_cnt, utend_dyn_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical eastward-wind tendency
+        real(8), intent(in) :: utend_dyn_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_dyn_accum=utend_dyn_accum_in
+    end subroutine
+    
+    subroutine get_utend_dyn_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily dynamical eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_dyn_accum_initialized) then
+            array_shape=shape(state_ptr%p%utend_dyn_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_dyn_accum(state_cnt, vtend_dyn_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical northward-wind tendency
+        real(8), intent(out) :: vtend_dyn_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_dyn_accum_out=state_ptr%p%vtend_dyn_accum
+    end subroutine
+
+    subroutine set_vtend_dyn_accum(state_cnt, vtend_dyn_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily dynamical northward-wind tendency
+        real(8), intent(in) :: vtend_dyn_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_dyn_accum=vtend_dyn_accum_in
+    end subroutine
+    
+    subroutine get_vtend_dyn_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily dynamical northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_dyn_accum_initialized) then
+            array_shape=shape(state_ptr%p%vtend_dyn_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_phy_accum(state_cnt, utend_phy_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical eastward-wind tendency
+        real(8), intent(out) :: utend_phy_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_phy_accum_out=state_ptr%p%utend_phy_accum
+    end subroutine
+
+    subroutine set_utend_phy_accum(state_cnt, utend_phy_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical eastward-wind tendency
+        real(8), intent(in) :: utend_phy_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_phy_accum=utend_phy_accum_in
+    end subroutine
+    
+    subroutine get_utend_phy_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily physical eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_phy_accum_initialized) then
+            array_shape=shape(state_ptr%p%utend_phy_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_phy_accum(state_cnt, vtend_phy_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical northward-wind tendency
+        real(8), intent(out) :: vtend_phy_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_phy_accum_out=state_ptr%p%vtend_phy_accum
+    end subroutine
+
+    subroutine set_vtend_phy_accum(state_cnt, vtend_phy_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily physical northward-wind tendency
+        real(8), intent(in) :: vtend_phy_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_phy_accum=vtend_phy_accum_in
+    end subroutine
+    
+    subroutine get_vtend_phy_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily physical northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_phy_accum_initialized) then
+            array_shape=shape(state_ptr%p%vtend_phy_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_pbl_accum(state_cnt, utend_pbl_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        real(8), intent(out) :: utend_pbl_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_pbl_accum_out=state_ptr%p%utend_pbl_accum
+    end subroutine
+
+    subroutine set_utend_pbl_accum(state_cnt, utend_pbl_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        real(8), intent(in) :: utend_pbl_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_pbl_accum=utend_pbl_accum_in
+    end subroutine
+    
+    subroutine get_utend_pbl_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily boundary-layer and surface-flux eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_pbl_accum_initialized) then
+            array_shape=shape(state_ptr%p%utend_pbl_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_pbl_accum(state_cnt, vtend_pbl_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        real(8), intent(out) :: vtend_pbl_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_pbl_accum_out=state_ptr%p%vtend_pbl_accum
+    end subroutine
+
+    subroutine set_vtend_pbl_accum(state_cnt, vtend_pbl_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        real(8), intent(in) :: vtend_pbl_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_pbl_accum=vtend_pbl_accum_in
+    end subroutine
+    
+    subroutine get_vtend_pbl_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily boundary-layer and surface-flux northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_pbl_accum_initialized) then
+            array_shape=shape(state_ptr%p%vtend_pbl_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_gwd_accum(state_cnt, utend_gwd_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        real(8), intent(out) :: utend_gwd_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_gwd_accum_out=state_ptr%p%utend_gwd_accum
+    end subroutine
+
+    subroutine set_utend_gwd_accum(state_cnt, utend_gwd_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        real(8), intent(in) :: utend_gwd_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_gwd_accum=utend_gwd_accum_in
+    end subroutine
+    
+    subroutine get_utend_gwd_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily orographic gravity-wave-drag eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_gwd_accum_initialized) then
+            array_shape=shape(state_ptr%p%utend_gwd_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_gwd_accum(state_cnt, vtend_gwd_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        real(8), intent(out) :: vtend_gwd_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_gwd_accum_out=state_ptr%p%vtend_gwd_accum
+    end subroutine
+
+    subroutine set_vtend_gwd_accum(state_cnt, vtend_gwd_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        real(8), intent(in) :: vtend_gwd_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_gwd_accum=vtend_gwd_accum_in
+    end subroutine
+    
+    subroutine get_vtend_gwd_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily orographic gravity-wave-drag northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_gwd_accum_initialized) then
+            array_shape=shape(state_ptr%p%vtend_gwd_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_hs_accum(state_cnt, utend_hs_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez eastward-wind tendency
+        real(8), intent(out) :: utend_hs_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_hs_accum_out=state_ptr%p%utend_hs_accum
+    end subroutine
+
+    subroutine set_utend_hs_accum(state_cnt, utend_hs_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez eastward-wind tendency
+        real(8), intent(in) :: utend_hs_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_hs_accum=utend_hs_accum_in
+    end subroutine
+    
+    subroutine get_utend_hs_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily Held-Suarez eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_hs_accum_initialized) then
+            array_shape=shape(state_ptr%p%utend_hs_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_hs_accum(state_cnt, vtend_hs_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez northward-wind tendency
+        real(8), intent(out) :: vtend_hs_accum_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_hs_accum_out=state_ptr%p%vtend_hs_accum
+    end subroutine
+
+    subroutine set_vtend_hs_accum(state_cnt, vtend_hs_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily Held-Suarez northward-wind tendency
+        real(8), intent(in) :: vtend_hs_accum_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_hs_accum=vtend_hs_accum_in
+    end subroutine
+    
+    subroutine get_vtend_hs_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily Held-Suarez northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_hs_accum_initialized) then
+            array_shape=shape(state_ptr%p%vtend_hs_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ustr_sfc_accum(state_cnt, ustr_sfc_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily area-weighted surface eastward stress diagnostic
+        real(8), intent(out) :: ustr_sfc_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ustr_sfc_accum_out=state_ptr%p%ustr_sfc_accum
+    end subroutine
+
+    subroutine set_ustr_sfc_accum(state_cnt, ustr_sfc_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily area-weighted surface eastward stress diagnostic
+        real(8), intent(in) :: ustr_sfc_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ustr_sfc_accum=ustr_sfc_accum_in
+    end subroutine
+    
+    subroutine get_ustr_sfc_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily area-weighted surface eastward stress diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ustr_sfc_accum_initialized) then
+            array_shape=shape(state_ptr%p%ustr_sfc_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vstr_sfc_accum(state_cnt, vstr_sfc_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily area-weighted surface northward stress diagnostic
+        real(8), intent(out) :: vstr_sfc_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vstr_sfc_accum_out=state_ptr%p%vstr_sfc_accum
+    end subroutine
+
+    subroutine set_vstr_sfc_accum(state_cnt, vstr_sfc_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily area-weighted surface northward stress diagnostic
+        real(8), intent(in) :: vstr_sfc_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vstr_sfc_accum=vstr_sfc_accum_in
+    end subroutine
+    
+    subroutine get_vstr_sfc_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily area-weighted surface northward stress diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vstr_sfc_accum_initialized) then
+            array_shape=shape(state_ptr%p%vstr_sfc_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_cloud_cover_accum(state_cnt, cloud_cover_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total cloud-cover diagnostic
+        real(8), intent(out) :: cloud_cover_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        cloud_cover_accum_out=state_ptr%p%cloud_cover_accum
+    end subroutine
+
+    subroutine set_cloud_cover_accum(state_cnt, cloud_cover_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total cloud-cover diagnostic
+        real(8), intent(in) :: cloud_cover_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%cloud_cover_accum=cloud_cover_accum_in
+    end subroutine
+    
+    subroutine get_cloud_cover_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily total cloud-cover diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%cloud_cover_accum_initialized) then
+            array_shape=shape(state_ptr%p%cloud_cover_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_stratiform_cloud_cover_accum(state_cnt, stratiform_cloud_cover_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily stratiform cloud-cover diagnostic
+        real(8), intent(out) :: stratiform_cloud_cover_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        stratiform_cloud_cover_accum_out=state_ptr%p%stratiform_cloud_cover_accum
+    end subroutine
+
+    subroutine set_stratiform_cloud_cover_accum(state_cnt, stratiform_cloud_cover_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily stratiform cloud-cover diagnostic
+        real(8), intent(in) :: stratiform_cloud_cover_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%stratiform_cloud_cover_accum=stratiform_cloud_cover_accum_in
+    end subroutine
+    
+    subroutine get_stratiform_cloud_cover_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily stratiform cloud-cover diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%stratiform_cloud_cover_accum_initialized) then
+            array_shape=shape(state_ptr%p%stratiform_cloud_cover_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_total_cloud_top_pressure_accum(state_cnt, total_cloud_top_pressure_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total cloud-top pressure diagnostic
+        real(8), intent(out) :: total_cloud_top_pressure_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        total_cloud_top_pressure_accum_out=state_ptr%p%total_cloud_top_pressure_accum
+    end subroutine
+
+    subroutine set_total_cloud_top_pressure_accum(state_cnt, total_cloud_top_pressure_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total cloud-top pressure diagnostic
+        real(8), intent(in) :: total_cloud_top_pressure_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%total_cloud_top_pressure_accum=total_cloud_top_pressure_accum_in
+    end subroutine
+    
+    subroutine get_total_cloud_top_pressure_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily total cloud-top pressure diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%total_cloud_top_pressure_accum_initialized) then
+            array_shape=shape(state_ptr%p%total_cloud_top_pressure_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_total_cloud_top_count(state_cnt, total_cloud_top_count_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        real(8), intent(out) :: total_cloud_top_count_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        total_cloud_top_count_out=state_ptr%p%total_cloud_top_count
+    end subroutine
+
+    subroutine set_total_cloud_top_count(state_cnt, total_cloud_top_count_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        real(8), intent(in) :: total_cloud_top_count_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%total_cloud_top_count=total_cloud_top_count_in
+    end subroutine
+    
+    subroutine get_total_cloud_top_count_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Number of valid samples accumulated in the daily total cloud-top pressure diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%total_cloud_top_count_initialized) then
+            array_shape=shape(state_ptr%p%total_cloud_top_count)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_conv_cloud_top_pressure_accum(state_cnt, conv_cloud_top_pressure_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective cloud-top pressure diagnostic
+        real(8), intent(out) :: conv_cloud_top_pressure_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        conv_cloud_top_pressure_accum_out=state_ptr%p%conv_cloud_top_pressure_accum
+    end subroutine
+
+    subroutine set_conv_cloud_top_pressure_accum(state_cnt, conv_cloud_top_pressure_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily convective cloud-top pressure diagnostic
+        real(8), intent(in) :: conv_cloud_top_pressure_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%conv_cloud_top_pressure_accum=conv_cloud_top_pressure_accum_in
+    end subroutine
+    
+    subroutine get_conv_cloud_top_pressure_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily convective cloud-top pressure diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%conv_cloud_top_pressure_accum_initialized) then
+            array_shape=shape(state_ptr%p%conv_cloud_top_pressure_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_conv_cloud_top_count(state_cnt, conv_cloud_top_count_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        real(8), intent(out) :: conv_cloud_top_count_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        conv_cloud_top_count_out=state_ptr%p%conv_cloud_top_count
+    end subroutine
+
+    subroutine set_conv_cloud_top_count(state_cnt, conv_cloud_top_count_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        real(8), intent(in) :: conv_cloud_top_count_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%conv_cloud_top_count=conv_cloud_top_count_in
+    end subroutine
+    
+    subroutine get_conv_cloud_top_count_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%conv_cloud_top_count_initialized) then
+            array_shape=shape(state_ptr%p%conv_cloud_top_count)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_column_water_vapor_accum(state_cnt, column_water_vapor_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily column water vapor diagnostic
+        real(8), intent(out) :: column_water_vapor_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        column_water_vapor_accum_out=state_ptr%p%column_water_vapor_accum
+    end subroutine
+
+    subroutine set_column_water_vapor_accum(state_cnt, column_water_vapor_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily column water vapor diagnostic
+        real(8), intent(in) :: column_water_vapor_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%column_water_vapor_accum=column_water_vapor_accum_in
+    end subroutine
+    
+    subroutine get_column_water_vapor_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily column water vapor diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%column_water_vapor_accum_initialized) then
+            array_shape=shape(state_ptr%p%column_water_vapor_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_precip_accum(state_cnt, precip_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total precipitation diagnostic
+        real(8), intent(out) :: precip_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        precip_accum_out=state_ptr%p%precip_accum
+    end subroutine
+
+    subroutine set_precip_accum(state_cnt, precip_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily total precipitation diagnostic
+        real(8), intent(in) :: precip_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%precip_accum=precip_accum_in
+    end subroutine
+    
+    subroutine get_precip_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily total precipitation diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%precip_accum_initialized) then
+            array_shape=shape(state_ptr%p%precip_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_evap_accum(state_cnt, evap_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily surface evaporation diagnostic
+        real(8), intent(out) :: evap_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        evap_accum_out=state_ptr%p%evap_accum
+    end subroutine
+
+    subroutine set_evap_accum(state_cnt, evap_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily surface evaporation diagnostic
+        real(8), intent(in) :: evap_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%evap_accum=evap_accum_in
+    end subroutine
+    
+    subroutine get_evap_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily surface evaporation diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%evap_accum_initialized) then
+            array_shape=shape(state_ptr%p%evap_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_down_accum(state_cnt, toa_sw_down_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily incoming top-of-atmosphere shortwave radiation
+        real(8), intent(out) :: toa_sw_down_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_down_accum_out=state_ptr%p%toa_sw_down_accum
+    end subroutine
+
+    subroutine set_toa_sw_down_accum(state_cnt, toa_sw_down_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily incoming top-of-atmosphere shortwave radiation
+        real(8), intent(in) :: toa_sw_down_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_down_accum=toa_sw_down_accum_in
+    end subroutine
+    
+    subroutine get_toa_sw_down_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily incoming top-of-atmosphere shortwave radiation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_down_accum_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_down_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_up_accum(state_cnt, toa_sw_up_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        real(8), intent(out) :: toa_sw_up_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_up_accum_out=state_ptr%p%toa_sw_up_accum
+    end subroutine
+
+    subroutine set_toa_sw_up_accum(state_cnt, toa_sw_up_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        real(8), intent(in) :: toa_sw_up_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_up_accum=toa_sw_up_accum_in
+    end subroutine
+    
+    subroutine get_toa_sw_up_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily outgoing top-of-atmosphere shortwave radiation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_up_accum_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_up_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_net_accum(state_cnt, toa_sw_net_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        real(8), intent(out) :: toa_sw_net_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_net_accum_out=state_ptr%p%toa_sw_net_accum
+    end subroutine
+
+    subroutine set_toa_sw_net_accum(state_cnt, toa_sw_net_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        real(8), intent(in) :: toa_sw_net_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_net_accum=toa_sw_net_accum_in
+    end subroutine
+    
+    subroutine get_toa_sw_net_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_net_accum_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_net_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_olr_accum(state_cnt, olr_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily outgoing longwave radiation at the top of atmosphere
+        real(8), intent(out) :: olr_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        olr_accum_out=state_ptr%p%olr_accum
+    end subroutine
+
+    subroutine set_olr_accum(state_cnt, olr_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily outgoing longwave radiation at the top of atmosphere
+        real(8), intent(in) :: olr_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%olr_accum=olr_accum_in
+    end subroutine
+    
+    subroutine get_olr_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily outgoing longwave radiation at the top of atmosphere
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%olr_accum_initialized) then
+            array_shape=shape(state_ptr%p%olr_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lh_flux_accum(state_cnt, surface_lh_flux_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward latent heat flux at the surface
+        real(8), intent(out) :: surface_lh_flux_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lh_flux_accum_out=state_ptr%p%surface_lh_flux_accum
+    end subroutine
+
+    subroutine set_surface_lh_flux_accum(state_cnt, surface_lh_flux_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward latent heat flux at the surface
+        real(8), intent(in) :: surface_lh_flux_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lh_flux_accum=surface_lh_flux_accum_in
+    end subroutine
+    
+    subroutine get_surface_lh_flux_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily upward latent heat flux at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lh_flux_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_lh_flux_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sh_flux_accum(state_cnt, surface_sh_flux_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward sensible heat flux at the surface
+        real(8), intent(out) :: surface_sh_flux_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sh_flux_accum_out=state_ptr%p%surface_sh_flux_accum
+    end subroutine
+
+    subroutine set_surface_sh_flux_accum(state_cnt, surface_sh_flux_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward sensible heat flux at the surface
+        real(8), intent(in) :: surface_sh_flux_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sh_flux_accum=surface_sh_flux_accum_in
+    end subroutine
+    
+    subroutine get_surface_sh_flux_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily upward sensible heat flux at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sh_flux_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_sh_flux_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_down_accum(state_cnt, surface_sw_down_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily downward shortwave radiation at the surface
+        real(8), intent(out) :: surface_sw_down_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_down_accum_out=state_ptr%p%surface_sw_down_accum
+    end subroutine
+
+    subroutine set_surface_sw_down_accum(state_cnt, surface_sw_down_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily downward shortwave radiation at the surface
+        real(8), intent(in) :: surface_sw_down_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_down_accum=surface_sw_down_accum_in
+    end subroutine
+    
+    subroutine get_surface_sw_down_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily downward shortwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_down_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_down_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_up_accum(state_cnt, surface_sw_up_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward shortwave radiation at the surface
+        real(8), intent(out) :: surface_sw_up_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_up_accum_out=state_ptr%p%surface_sw_up_accum
+    end subroutine
+
+    subroutine set_surface_sw_up_accum(state_cnt, surface_sw_up_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward shortwave radiation at the surface
+        real(8), intent(in) :: surface_sw_up_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_up_accum=surface_sw_up_accum_in
+    end subroutine
+    
+    subroutine get_surface_sw_up_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily upward shortwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_up_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_up_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_net_accum(state_cnt, surface_sw_net_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net shortwave radiation at the surface (downward positive)
+        real(8), intent(out) :: surface_sw_net_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_net_accum_out=state_ptr%p%surface_sw_net_accum
+    end subroutine
+
+    subroutine set_surface_sw_net_accum(state_cnt, surface_sw_net_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net shortwave radiation at the surface (downward positive)
+        real(8), intent(in) :: surface_sw_net_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_net_accum=surface_sw_net_accum_in
+    end subroutine
+    
+    subroutine get_surface_sw_net_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily net shortwave radiation at the surface (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_net_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_net_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_down_accum(state_cnt, surface_lw_down_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily downward longwave radiation at the surface
+        real(8), intent(out) :: surface_lw_down_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_down_accum_out=state_ptr%p%surface_lw_down_accum
+    end subroutine
+
+    subroutine set_surface_lw_down_accum(state_cnt, surface_lw_down_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily downward longwave radiation at the surface
+        real(8), intent(in) :: surface_lw_down_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_down_accum=surface_lw_down_accum_in
+    end subroutine
+    
+    subroutine get_surface_lw_down_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily downward longwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_down_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_down_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_up_accum(state_cnt, surface_lw_up_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward longwave radiation at the surface
+        real(8), intent(out) :: surface_lw_up_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_up_accum_out=state_ptr%p%surface_lw_up_accum
+    end subroutine
+
+    subroutine set_surface_lw_up_accum(state_cnt, surface_lw_up_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily upward longwave radiation at the surface
+        real(8), intent(in) :: surface_lw_up_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_up_accum=surface_lw_up_accum_in
+    end subroutine
+    
+    subroutine get_surface_lw_up_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily upward longwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_up_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_up_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_net_accum(state_cnt, surface_lw_net_accum_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net longwave radiation at the surface (downward positive)
+        real(8), intent(out) :: surface_lw_net_accum_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_net_accum_out=state_ptr%p%surface_lw_net_accum
+    end subroutine
+
+    subroutine set_surface_lw_net_accum(state_cnt, surface_lw_net_accum_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Accumulated daily net longwave radiation at the surface (downward positive)
+        real(8), intent(in) :: surface_lw_net_accum_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_net_accum=surface_lw_net_accum_in
+    end subroutine
+    
+    subroutine get_surface_lw_net_accum_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Accumulated daily net longwave radiation at the surface (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_net_accum_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_net_accum)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_dyn_mean(state_cnt, ttend_dyn_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical temperature tendency
+        real(8), intent(out) :: ttend_dyn_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_dyn_mean_out=state_ptr%p%ttend_dyn_mean
+    end subroutine
+
+    subroutine set_ttend_dyn_mean(state_cnt, ttend_dyn_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical temperature tendency
+        real(8), intent(in) :: ttend_dyn_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_dyn_mean=ttend_dyn_mean_in
+    end subroutine
+    
+    subroutine get_ttend_dyn_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean dynamical temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_dyn_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_dyn_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_phy_mean(state_cnt, ttend_phy_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical temperature tendency
+        real(8), intent(out) :: ttend_phy_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_phy_mean_out=state_ptr%p%ttend_phy_mean
+    end subroutine
+
+    subroutine set_ttend_phy_mean(state_cnt, ttend_phy_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical temperature tendency
+        real(8), intent(in) :: ttend_phy_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_phy_mean=ttend_phy_mean_in
+    end subroutine
+    
+    subroutine get_ttend_phy_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean physical temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_phy_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_phy_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_cnv_mean(state_cnt, ttend_cnv_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective temperature tendency
+        real(8), intent(out) :: ttend_cnv_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_cnv_mean_out=state_ptr%p%ttend_cnv_mean
+    end subroutine
+
+    subroutine set_ttend_cnv_mean(state_cnt, ttend_cnv_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective temperature tendency
+        real(8), intent(in) :: ttend_cnv_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_cnv_mean=ttend_cnv_mean_in
+    end subroutine
+    
+    subroutine get_ttend_cnv_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean convective temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_cnv_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_cnv_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_lsc_mean(state_cnt, ttend_lsc_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean large-scale condensation temperature tendency
+        real(8), intent(out) :: ttend_lsc_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_lsc_mean_out=state_ptr%p%ttend_lsc_mean
+    end subroutine
+
+    subroutine set_ttend_lsc_mean(state_cnt, ttend_lsc_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean large-scale condensation temperature tendency
+        real(8), intent(in) :: ttend_lsc_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_lsc_mean=ttend_lsc_mean_in
+    end subroutine
+    
+    subroutine get_ttend_lsc_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean large-scale condensation temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_lsc_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_lsc_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_sw_mean(state_cnt, ttend_sw_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean shortwave-radiative temperature tendency
+        real(8), intent(out) :: ttend_sw_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_sw_mean_out=state_ptr%p%ttend_sw_mean
+    end subroutine
+
+    subroutine set_ttend_sw_mean(state_cnt, ttend_sw_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean shortwave-radiative temperature tendency
+        real(8), intent(in) :: ttend_sw_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_sw_mean=ttend_sw_mean_in
+    end subroutine
+    
+    subroutine get_ttend_sw_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean shortwave-radiative temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_sw_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_sw_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_lw_mean(state_cnt, ttend_lw_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean longwave-radiative temperature tendency
+        real(8), intent(out) :: ttend_lw_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_lw_mean_out=state_ptr%p%ttend_lw_mean
+    end subroutine
+
+    subroutine set_ttend_lw_mean(state_cnt, ttend_lw_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean longwave-radiative temperature tendency
+        real(8), intent(in) :: ttend_lw_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_lw_mean=ttend_lw_mean_in
+    end subroutine
+    
+    subroutine get_ttend_lw_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean longwave-radiative temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_lw_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_lw_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_pbl_mean(state_cnt, ttend_pbl_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux temperature tendency
+        real(8), intent(out) :: ttend_pbl_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_pbl_mean_out=state_ptr%p%ttend_pbl_mean
+    end subroutine
+
+    subroutine set_ttend_pbl_mean(state_cnt, ttend_pbl_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux temperature tendency
+        real(8), intent(in) :: ttend_pbl_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_pbl_mean=ttend_pbl_mean_in
+    end subroutine
+    
+    subroutine get_ttend_pbl_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean boundary-layer and surface-flux temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_pbl_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_pbl_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ttend_hs_mean(state_cnt, ttend_hs_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez temperature tendency
+        real(8), intent(out) :: ttend_hs_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_hs_mean_out=state_ptr%p%ttend_hs_mean
+    end subroutine
+
+    subroutine set_ttend_hs_mean(state_cnt, ttend_hs_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez temperature tendency
+        real(8), intent(in) :: ttend_hs_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_hs_mean=ttend_hs_mean_in
+    end subroutine
+    
+    subroutine get_ttend_hs_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean Held-Suarez temperature tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ttend_hs_mean_initialized) then
+            array_shape=shape(state_ptr%p%ttend_hs_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_dyn_mean(state_cnt, qtend_dyn_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical specific humidity tendency
+        real(8), intent(out) :: qtend_dyn_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_dyn_mean_out=state_ptr%p%qtend_dyn_mean
+    end subroutine
+
+    subroutine set_qtend_dyn_mean(state_cnt, qtend_dyn_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical specific humidity tendency
+        real(8), intent(in) :: qtend_dyn_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_dyn_mean=qtend_dyn_mean_in
+    end subroutine
+    
+    subroutine get_qtend_dyn_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean dynamical specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_dyn_mean_initialized) then
+            array_shape=shape(state_ptr%p%qtend_dyn_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_phy_mean(state_cnt, qtend_phy_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical specific humidity tendency
+        real(8), intent(out) :: qtend_phy_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_phy_mean_out=state_ptr%p%qtend_phy_mean
+    end subroutine
+
+    subroutine set_qtend_phy_mean(state_cnt, qtend_phy_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical specific humidity tendency
+        real(8), intent(in) :: qtend_phy_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_phy_mean=qtend_phy_mean_in
+    end subroutine
+    
+    subroutine get_qtend_phy_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean physical specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_phy_mean_initialized) then
+            array_shape=shape(state_ptr%p%qtend_phy_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_cnv_mean(state_cnt, qtend_cnv_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective specific humidity tendency
+        real(8), intent(out) :: qtend_cnv_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_cnv_mean_out=state_ptr%p%qtend_cnv_mean
+    end subroutine
+
+    subroutine set_qtend_cnv_mean(state_cnt, qtend_cnv_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective specific humidity tendency
+        real(8), intent(in) :: qtend_cnv_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_cnv_mean=qtend_cnv_mean_in
+    end subroutine
+    
+    subroutine get_qtend_cnv_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean convective specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_cnv_mean_initialized) then
+            array_shape=shape(state_ptr%p%qtend_cnv_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_lsc_mean(state_cnt, qtend_lsc_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean large-scale-condensation specific humidity tendency
+        real(8), intent(out) :: qtend_lsc_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_lsc_mean_out=state_ptr%p%qtend_lsc_mean
+    end subroutine
+
+    subroutine set_qtend_lsc_mean(state_cnt, qtend_lsc_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean large-scale-condensation specific humidity tendency
+        real(8), intent(in) :: qtend_lsc_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_lsc_mean=qtend_lsc_mean_in
+    end subroutine
+    
+    subroutine get_qtend_lsc_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean large-scale-condensation specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_lsc_mean_initialized) then
+            array_shape=shape(state_ptr%p%qtend_lsc_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_qtend_pbl_mean(state_cnt, qtend_pbl_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux specific humidity tendency
+        real(8), intent(out) :: qtend_pbl_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        qtend_pbl_mean_out=state_ptr%p%qtend_pbl_mean
+    end subroutine
+
+    subroutine set_qtend_pbl_mean(state_cnt, qtend_pbl_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux specific humidity tendency
+        real(8), intent(in) :: qtend_pbl_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%qtend_pbl_mean=qtend_pbl_mean_in
+    end subroutine
+    
+    subroutine get_qtend_pbl_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean boundary-layer and surface-flux specific humidity tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%qtend_pbl_mean_initialized) then
+            array_shape=shape(state_ptr%p%qtend_pbl_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_dyn_mean(state_cnt, utend_dyn_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical eastward-wind tendency
+        real(8), intent(out) :: utend_dyn_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_dyn_mean_out=state_ptr%p%utend_dyn_mean
+    end subroutine
+
+    subroutine set_utend_dyn_mean(state_cnt, utend_dyn_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical eastward-wind tendency
+        real(8), intent(in) :: utend_dyn_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_dyn_mean=utend_dyn_mean_in
+    end subroutine
+    
+    subroutine get_utend_dyn_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean dynamical eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_dyn_mean_initialized) then
+            array_shape=shape(state_ptr%p%utend_dyn_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_dyn_mean(state_cnt, vtend_dyn_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical northward-wind tendency
+        real(8), intent(out) :: vtend_dyn_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_dyn_mean_out=state_ptr%p%vtend_dyn_mean
+    end subroutine
+
+    subroutine set_vtend_dyn_mean(state_cnt, vtend_dyn_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean dynamical northward-wind tendency
+        real(8), intent(in) :: vtend_dyn_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_dyn_mean=vtend_dyn_mean_in
+    end subroutine
+    
+    subroutine get_vtend_dyn_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean dynamical northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_dyn_mean_initialized) then
+            array_shape=shape(state_ptr%p%vtend_dyn_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_phy_mean(state_cnt, utend_phy_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical eastward-wind tendency
+        real(8), intent(out) :: utend_phy_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_phy_mean_out=state_ptr%p%utend_phy_mean
+    end subroutine
+
+    subroutine set_utend_phy_mean(state_cnt, utend_phy_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical eastward-wind tendency
+        real(8), intent(in) :: utend_phy_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_phy_mean=utend_phy_mean_in
+    end subroutine
+    
+    subroutine get_utend_phy_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean physical eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_phy_mean_initialized) then
+            array_shape=shape(state_ptr%p%utend_phy_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_phy_mean(state_cnt, vtend_phy_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical northward-wind tendency
+        real(8), intent(out) :: vtend_phy_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_phy_mean_out=state_ptr%p%vtend_phy_mean
+    end subroutine
+
+    subroutine set_vtend_phy_mean(state_cnt, vtend_phy_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean physical northward-wind tendency
+        real(8), intent(in) :: vtend_phy_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_phy_mean=vtend_phy_mean_in
+    end subroutine
+    
+    subroutine get_vtend_phy_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean physical northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_phy_mean_initialized) then
+            array_shape=shape(state_ptr%p%vtend_phy_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_pbl_mean(state_cnt, utend_pbl_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        real(8), intent(out) :: utend_pbl_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_pbl_mean_out=state_ptr%p%utend_pbl_mean
+    end subroutine
+
+    subroutine set_utend_pbl_mean(state_cnt, utend_pbl_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        real(8), intent(in) :: utend_pbl_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_pbl_mean=utend_pbl_mean_in
+    end subroutine
+    
+    subroutine get_utend_pbl_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean boundary-layer and surface-flux eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_pbl_mean_initialized) then
+            array_shape=shape(state_ptr%p%utend_pbl_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_pbl_mean(state_cnt, vtend_pbl_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux northward-wind tendency
+        real(8), intent(out) :: vtend_pbl_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_pbl_mean_out=state_ptr%p%vtend_pbl_mean
+    end subroutine
+
+    subroutine set_vtend_pbl_mean(state_cnt, vtend_pbl_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean boundary-layer and surface-flux northward-wind tendency
+        real(8), intent(in) :: vtend_pbl_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_pbl_mean=vtend_pbl_mean_in
+    end subroutine
+    
+    subroutine get_vtend_pbl_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean boundary-layer and surface-flux northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_pbl_mean_initialized) then
+            array_shape=shape(state_ptr%p%vtend_pbl_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_gwd_mean(state_cnt, utend_gwd_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        real(8), intent(out) :: utend_gwd_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_gwd_mean_out=state_ptr%p%utend_gwd_mean
+    end subroutine
+
+    subroutine set_utend_gwd_mean(state_cnt, utend_gwd_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        real(8), intent(in) :: utend_gwd_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_gwd_mean=utend_gwd_mean_in
+    end subroutine
+    
+    subroutine get_utend_gwd_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean orographic gravity-wave-drag eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_gwd_mean_initialized) then
+            array_shape=shape(state_ptr%p%utend_gwd_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_gwd_mean(state_cnt, vtend_gwd_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean orographic gravity-wave-drag northward-wind tendency
+        real(8), intent(out) :: vtend_gwd_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_gwd_mean_out=state_ptr%p%vtend_gwd_mean
+    end subroutine
+
+    subroutine set_vtend_gwd_mean(state_cnt, vtend_gwd_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean orographic gravity-wave-drag northward-wind tendency
+        real(8), intent(in) :: vtend_gwd_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_gwd_mean=vtend_gwd_mean_in
+    end subroutine
+    
+    subroutine get_vtend_gwd_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean orographic gravity-wave-drag northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_gwd_mean_initialized) then
+            array_shape=shape(state_ptr%p%vtend_gwd_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_utend_hs_mean(state_cnt, utend_hs_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez eastward-wind tendency
+        real(8), intent(out) :: utend_hs_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        utend_hs_mean_out=state_ptr%p%utend_hs_mean
+    end subroutine
+
+    subroutine set_utend_hs_mean(state_cnt, utend_hs_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez eastward-wind tendency
+        real(8), intent(in) :: utend_hs_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%utend_hs_mean=utend_hs_mean_in
+    end subroutine
+    
+    subroutine get_utend_hs_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean Held-Suarez eastward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%utend_hs_mean_initialized) then
+            array_shape=shape(state_ptr%p%utend_hs_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vtend_hs_mean(state_cnt, vtend_hs_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez northward-wind tendency
+        real(8), intent(out) :: vtend_hs_mean_out(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vtend_hs_mean_out=state_ptr%p%vtend_hs_mean
+    end subroutine
+
+    subroutine set_vtend_hs_mean(state_cnt, vtend_hs_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean Held-Suarez northward-wind tendency
+        real(8), intent(in) :: vtend_hs_mean_in(ix, il, kx)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vtend_hs_mean=vtend_hs_mean_in
+    end subroutine
+    
+    subroutine get_vtend_hs_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean Held-Suarez northward-wind tendency
+        integer, intent(out) :: array_shape(3)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vtend_hs_mean_initialized) then
+            array_shape=shape(state_ptr%p%vtend_hs_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_ustr_sfc_mean(state_cnt, ustr_sfc_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean area-weighted surface eastward stress diagnostic
+        real(8), intent(out) :: ustr_sfc_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ustr_sfc_mean_out=state_ptr%p%ustr_sfc_mean
+    end subroutine
+
+    subroutine set_ustr_sfc_mean(state_cnt, ustr_sfc_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean area-weighted surface eastward stress diagnostic
+        real(8), intent(in) :: ustr_sfc_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ustr_sfc_mean=ustr_sfc_mean_in
+    end subroutine
+    
+    subroutine get_ustr_sfc_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean area-weighted surface eastward stress diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%ustr_sfc_mean_initialized) then
+            array_shape=shape(state_ptr%p%ustr_sfc_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_vstr_sfc_mean(state_cnt, vstr_sfc_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean area-weighted surface northward stress diagnostic
+        real(8), intent(out) :: vstr_sfc_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        vstr_sfc_mean_out=state_ptr%p%vstr_sfc_mean
+    end subroutine
+
+    subroutine set_vstr_sfc_mean(state_cnt, vstr_sfc_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean area-weighted surface northward stress diagnostic
+        real(8), intent(in) :: vstr_sfc_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%vstr_sfc_mean=vstr_sfc_mean_in
+    end subroutine
+    
+    subroutine get_vstr_sfc_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean area-weighted surface northward stress diagnostic
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%vstr_sfc_mean_initialized) then
+            array_shape=shape(state_ptr%p%vstr_sfc_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_cloud_cover_mean(state_cnt, cloud_cover_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean total cloud cover
+        real(8), intent(out) :: cloud_cover_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        cloud_cover_mean_out=state_ptr%p%cloud_cover_mean
+    end subroutine
+
+    subroutine set_cloud_cover_mean(state_cnt, cloud_cover_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean total cloud cover
+        real(8), intent(in) :: cloud_cover_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%cloud_cover_mean=cloud_cover_mean_in
+    end subroutine
+    
+    subroutine get_cloud_cover_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean total cloud cover
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%cloud_cover_mean_initialized) then
+            array_shape=shape(state_ptr%p%cloud_cover_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_stratiform_cloud_cover_mean(state_cnt, stratiform_cloud_cover_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean stratiform cloud cover
+        real(8), intent(out) :: stratiform_cloud_cover_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        stratiform_cloud_cover_mean_out=state_ptr%p%stratiform_cloud_cover_mean
+    end subroutine
+
+    subroutine set_stratiform_cloud_cover_mean(state_cnt, stratiform_cloud_cover_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean stratiform cloud cover
+        real(8), intent(in) :: stratiform_cloud_cover_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%stratiform_cloud_cover_mean=stratiform_cloud_cover_mean_in
+    end subroutine
+    
+    subroutine get_stratiform_cloud_cover_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean stratiform cloud cover
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%stratiform_cloud_cover_mean_initialized) then
+            array_shape=shape(state_ptr%p%stratiform_cloud_cover_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_total_cloud_top_pressure_mean(state_cnt, total_cloud_top_pressure_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean total cloud-top pressure
+        real(8), intent(out) :: total_cloud_top_pressure_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        total_cloud_top_pressure_mean_out=state_ptr%p%total_cloud_top_pressure_mean
+    end subroutine
+
+    subroutine set_total_cloud_top_pressure_mean(state_cnt, total_cloud_top_pressure_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean total cloud-top pressure
+        real(8), intent(in) :: total_cloud_top_pressure_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%total_cloud_top_pressure_mean=total_cloud_top_pressure_mean_in
+    end subroutine
+    
+    subroutine get_total_cloud_top_pressure_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean total cloud-top pressure
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%total_cloud_top_pressure_mean_initialized) then
+            array_shape=shape(state_ptr%p%total_cloud_top_pressure_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_conv_cloud_top_pressure_mean(state_cnt, conv_cloud_top_pressure_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective cloud-top pressure
+        real(8), intent(out) :: conv_cloud_top_pressure_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        conv_cloud_top_pressure_mean_out=state_ptr%p%conv_cloud_top_pressure_mean
+    end subroutine
+
+    subroutine set_conv_cloud_top_pressure_mean(state_cnt, conv_cloud_top_pressure_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean convective cloud-top pressure
+        real(8), intent(in) :: conv_cloud_top_pressure_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%conv_cloud_top_pressure_mean=conv_cloud_top_pressure_mean_in
+    end subroutine
+    
+    subroutine get_conv_cloud_top_pressure_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean convective cloud-top pressure
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%conv_cloud_top_pressure_mean_initialized) then
+            array_shape=shape(state_ptr%p%conv_cloud_top_pressure_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_column_water_vapor_mean(state_cnt, column_water_vapor_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean column water vapor
+        real(8), intent(out) :: column_water_vapor_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        column_water_vapor_mean_out=state_ptr%p%column_water_vapor_mean
+    end subroutine
+
+    subroutine set_column_water_vapor_mean(state_cnt, column_water_vapor_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean column water vapor
+        real(8), intent(in) :: column_water_vapor_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%column_water_vapor_mean=column_water_vapor_mean_in
+    end subroutine
+    
+    subroutine get_column_water_vapor_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean column water vapor
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%column_water_vapor_mean_initialized) then
+            array_shape=shape(state_ptr%p%column_water_vapor_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_precip_mean(state_cnt, precip_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily total precipitation
+        real(8), intent(out) :: precip_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        precip_mean_out=state_ptr%p%precip_mean
+    end subroutine
+
+    subroutine set_precip_mean(state_cnt, precip_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily total precipitation
+        real(8), intent(in) :: precip_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%precip_mean=precip_mean_in
+    end subroutine
+    
+    subroutine get_precip_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily total precipitation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%precip_mean_initialized) then
+            array_shape=shape(state_ptr%p%precip_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_evap_mean(state_cnt, evap_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily total evaporation
+        real(8), intent(out) :: evap_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        evap_mean_out=state_ptr%p%evap_mean
+    end subroutine
+
+    subroutine set_evap_mean(state_cnt, evap_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily total evaporation
+        real(8), intent(in) :: evap_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%evap_mean=evap_mean_in
+    end subroutine
+    
+    subroutine get_evap_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily total evaporation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%evap_mean_initialized) then
+            array_shape=shape(state_ptr%p%evap_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_down_mean(state_cnt, toa_sw_down_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean incoming top-of-atmosphere shortwave radiation
+        real(8), intent(out) :: toa_sw_down_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_down_mean_out=state_ptr%p%toa_sw_down_mean
+    end subroutine
+
+    subroutine set_toa_sw_down_mean(state_cnt, toa_sw_down_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean incoming top-of-atmosphere shortwave radiation
+        real(8), intent(in) :: toa_sw_down_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_down_mean=toa_sw_down_mean_in
+    end subroutine
+    
+    subroutine get_toa_sw_down_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean incoming top-of-atmosphere shortwave radiation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_down_mean_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_down_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_up_mean(state_cnt, toa_sw_up_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean outgoing top-of-atmosphere shortwave radiation
+        real(8), intent(out) :: toa_sw_up_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_up_mean_out=state_ptr%p%toa_sw_up_mean
+    end subroutine
+
+    subroutine set_toa_sw_up_mean(state_cnt, toa_sw_up_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean outgoing top-of-atmosphere shortwave radiation
+        real(8), intent(in) :: toa_sw_up_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_up_mean=toa_sw_up_mean_in
+    end subroutine
+    
+    subroutine get_toa_sw_up_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean outgoing top-of-atmosphere shortwave radiation
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_up_mean_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_up_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_toa_sw_net_mean(state_cnt, toa_sw_net_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        real(8), intent(out) :: toa_sw_net_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        toa_sw_net_mean_out=state_ptr%p%toa_sw_net_mean
+    end subroutine
+
+    subroutine set_toa_sw_net_mean(state_cnt, toa_sw_net_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        real(8), intent(in) :: toa_sw_net_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%toa_sw_net_mean=toa_sw_net_mean_in
+    end subroutine
+    
+    subroutine get_toa_sw_net_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean net top-of-atmosphere shortwave radiation (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%toa_sw_net_mean_initialized) then
+            array_shape=shape(state_ptr%p%toa_sw_net_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_olr_mean(state_cnt, olr_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean outgoing longwave radiation at the top of atmosphere
+        real(8), intent(out) :: olr_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        olr_mean_out=state_ptr%p%olr_mean
+    end subroutine
+
+    subroutine set_olr_mean(state_cnt, olr_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean outgoing longwave radiation at the top of atmosphere
+        real(8), intent(in) :: olr_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%olr_mean=olr_mean_in
+    end subroutine
+    
+    subroutine get_olr_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean outgoing longwave radiation at the top of atmosphere
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%olr_mean_initialized) then
+            array_shape=shape(state_ptr%p%olr_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lh_flux_mean(state_cnt, surface_lh_flux_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward latent heat flux at the surface
+        real(8), intent(out) :: surface_lh_flux_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lh_flux_mean_out=state_ptr%p%surface_lh_flux_mean
+    end subroutine
+
+    subroutine set_surface_lh_flux_mean(state_cnt, surface_lh_flux_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward latent heat flux at the surface
+        real(8), intent(in) :: surface_lh_flux_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lh_flux_mean=surface_lh_flux_mean_in
+    end subroutine
+    
+    subroutine get_surface_lh_flux_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean upward latent heat flux at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lh_flux_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_lh_flux_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sh_flux_mean(state_cnt, surface_sh_flux_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward sensible heat flux at the surface
+        real(8), intent(out) :: surface_sh_flux_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sh_flux_mean_out=state_ptr%p%surface_sh_flux_mean
+    end subroutine
+
+    subroutine set_surface_sh_flux_mean(state_cnt, surface_sh_flux_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward sensible heat flux at the surface
+        real(8), intent(in) :: surface_sh_flux_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sh_flux_mean=surface_sh_flux_mean_in
+    end subroutine
+    
+    subroutine get_surface_sh_flux_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean upward sensible heat flux at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sh_flux_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_sh_flux_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_down_mean(state_cnt, surface_sw_down_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean downward shortwave radiation at the surface
+        real(8), intent(out) :: surface_sw_down_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_down_mean_out=state_ptr%p%surface_sw_down_mean
+    end subroutine
+
+    subroutine set_surface_sw_down_mean(state_cnt, surface_sw_down_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean downward shortwave radiation at the surface
+        real(8), intent(in) :: surface_sw_down_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_down_mean=surface_sw_down_mean_in
+    end subroutine
+    
+    subroutine get_surface_sw_down_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean downward shortwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_down_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_down_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_up_mean(state_cnt, surface_sw_up_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward shortwave radiation at the surface
+        real(8), intent(out) :: surface_sw_up_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_up_mean_out=state_ptr%p%surface_sw_up_mean
+    end subroutine
+
+    subroutine set_surface_sw_up_mean(state_cnt, surface_sw_up_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward shortwave radiation at the surface
+        real(8), intent(in) :: surface_sw_up_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_up_mean=surface_sw_up_mean_in
+    end subroutine
+    
+    subroutine get_surface_sw_up_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean upward shortwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_up_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_up_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_sw_net_mean(state_cnt, surface_sw_net_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net shortwave radiation at the surface (downward positive)
+        real(8), intent(out) :: surface_sw_net_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_sw_net_mean_out=state_ptr%p%surface_sw_net_mean
+    end subroutine
+
+    subroutine set_surface_sw_net_mean(state_cnt, surface_sw_net_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net shortwave radiation at the surface (downward positive)
+        real(8), intent(in) :: surface_sw_net_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_sw_net_mean=surface_sw_net_mean_in
+    end subroutine
+    
+    subroutine get_surface_sw_net_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean net shortwave radiation at the surface (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_sw_net_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_sw_net_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_down_mean(state_cnt, surface_lw_down_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean downward longwave radiation at the surface
+        real(8), intent(out) :: surface_lw_down_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_down_mean_out=state_ptr%p%surface_lw_down_mean
+    end subroutine
+
+    subroutine set_surface_lw_down_mean(state_cnt, surface_lw_down_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean downward longwave radiation at the surface
+        real(8), intent(in) :: surface_lw_down_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_down_mean=surface_lw_down_mean_in
+    end subroutine
+    
+    subroutine get_surface_lw_down_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean downward longwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_down_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_down_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_up_mean(state_cnt, surface_lw_up_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward longwave radiation at the surface
+        real(8), intent(out) :: surface_lw_up_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_up_mean_out=state_ptr%p%surface_lw_up_mean
+    end subroutine
+
+    subroutine set_surface_lw_up_mean(state_cnt, surface_lw_up_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean upward longwave radiation at the surface
+        real(8), intent(in) :: surface_lw_up_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_up_mean=surface_lw_up_mean_in
+    end subroutine
+    
+    subroutine get_surface_lw_up_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean upward longwave radiation at the surface
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_up_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_up_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
+    subroutine get_surface_lw_net_mean(state_cnt, surface_lw_net_mean_out )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net longwave radiation at the surface (downward positive)
+        real(8), intent(out) :: surface_lw_net_mean_out(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        surface_lw_net_mean_out=state_ptr%p%surface_lw_net_mean
+    end subroutine
+
+    subroutine set_surface_lw_net_mean(state_cnt, surface_lw_net_mean_in )
+        use params
+        integer(8), intent(in) :: state_cnt
+                
+        !> Daily-mean net longwave radiation at the surface (downward positive)
+        real(8), intent(in) :: surface_lw_net_mean_in(ix, il)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%surface_lw_net_mean=surface_lw_net_mean_in
+    end subroutine
+    
+    subroutine get_surface_lw_net_mean_shape(state_cnt, array_shape)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Daily-mean net longwave radiation at the surface (downward positive)
+        integer, intent(out) :: array_shape(2)
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        if (state_ptr%p%surface_lw_net_mean_initialized) then
+            array_shape=shape(state_ptr%p%surface_lw_net_mean)
+        else
+            array_shape = 0             
+        endif
+    end subroutine
+
     subroutine get_precnv(state_cnt, precnv_out )
         use params
         integer(8), intent(in) :: state_cnt
@@ -4250,6 +7760,50 @@ contains
         state_ptr%p%current_step=current_step_in
     end subroutine
 
+    subroutine get_ttend_daily_count(state_cnt, ttend_daily_count_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Number of time steps accumulated in the current daily tendency mean.
+        integer, intent(out) :: ttend_daily_count_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        ttend_daily_count_out=state_ptr%p%ttend_daily_count
+    end subroutine
+
+    subroutine set_ttend_daily_count(state_cnt, ttend_daily_count_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Number of time steps accumulated in the current daily tendency mean.
+        integer, intent(in) :: ttend_daily_count_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%ttend_daily_count=ttend_daily_count_in
+    end subroutine
+
+    subroutine get_cloud_daily_count(state_cnt, cloud_daily_count_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Number of radiation-step samples accumulated in the current daily cloud diagnostics mean.
+        integer, intent(out) :: cloud_daily_count_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        cloud_daily_count_out=state_ptr%p%cloud_daily_count
+    end subroutine
+
+    subroutine set_cloud_daily_count(state_cnt, cloud_daily_count_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Number of radiation-step samples accumulated in the current daily cloud diagnostics mean.
+        integer, intent(in) :: cloud_daily_count_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%cloud_daily_count=cloud_daily_count_in
+    end subroutine
+
     subroutine get_increase_co2(state_cnt, increase_co2_out)
         use params
         integer(8), intent(in) :: state_cnt
@@ -4514,6 +8068,116 @@ contains
         state_ptr%p%hs_min_pressure_ratio=hs_min_pressure_ratio_in
     end subroutine
 
+    subroutine get_orographic_gwd_enabled(state_cnt, orographic_gwd_enabled_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Flag for the optional orographic gravity-wave-drag scheme
+        logical, intent(out) :: orographic_gwd_enabled_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        orographic_gwd_enabled_out=state_ptr%p%orographic_gwd_enabled
+    end subroutine
+
+    subroutine set_orographic_gwd_enabled(state_cnt, orographic_gwd_enabled_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Flag for the optional orographic gravity-wave-drag scheme
+        logical, intent(in) :: orographic_gwd_enabled_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%orographic_gwd_enabled=orographic_gwd_enabled_in
+    end subroutine
+
+    subroutine get_gwd_time_scale_days(state_cnt, gwd_time_scale_days_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Reference drag time scale for the optional orographic gravity-wave-drag scheme
+        real(8), intent(out) :: gwd_time_scale_days_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        gwd_time_scale_days_out=state_ptr%p%gwd_time_scale_days
+    end subroutine
+
+    subroutine set_gwd_time_scale_days(state_cnt, gwd_time_scale_days_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Reference drag time scale for the optional orographic gravity-wave-drag scheme
+        real(8), intent(in) :: gwd_time_scale_days_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%gwd_time_scale_days=gwd_time_scale_days_in
+    end subroutine
+
+    subroutine get_gwd_oro_threshold_m(state_cnt, gwd_oro_threshold_m_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Orography threshold for the optional orographic gravity-wave-drag scheme
+        real(8), intent(out) :: gwd_oro_threshold_m_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        gwd_oro_threshold_m_out=state_ptr%p%gwd_oro_threshold_m
+    end subroutine
+
+    subroutine set_gwd_oro_threshold_m(state_cnt, gwd_oro_threshold_m_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Orography threshold for the optional orographic gravity-wave-drag scheme
+        real(8), intent(in) :: gwd_oro_threshold_m_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%gwd_oro_threshold_m=gwd_oro_threshold_m_in
+    end subroutine
+
+    subroutine get_gwd_oro_scale_m(state_cnt, gwd_oro_scale_m_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Orography scale height used to saturate the optional orographic gravity-wave-drag scheme
+        real(8), intent(out) :: gwd_oro_scale_m_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        gwd_oro_scale_m_out=state_ptr%p%gwd_oro_scale_m
+    end subroutine
+
+    subroutine set_gwd_oro_scale_m(state_cnt, gwd_oro_scale_m_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Orography scale height used to saturate the optional orographic gravity-wave-drag scheme
+        real(8), intent(in) :: gwd_oro_scale_m_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%gwd_oro_scale_m=gwd_oro_scale_m_in
+    end subroutine
+
+    subroutine get_gwd_launch_sigma(state_cnt, gwd_launch_sigma_out)
+        use params
+        integer(8), intent(in) :: state_cnt
+        !> Sigma level above which the optional orographic gravity-wave-drag profile is applied
+        real(8), intent(out) :: gwd_launch_sigma_out
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        gwd_launch_sigma_out=state_ptr%p%gwd_launch_sigma
+    end subroutine
+
+    subroutine set_gwd_launch_sigma(state_cnt, gwd_launch_sigma_in)
+        use params
+        integer(8), intent(in) :: state_cnt       
+        !> Sigma level above which the optional orographic gravity-wave-drag profile is applied
+        real(8), intent(in) :: gwd_launch_sigma_in
+        type(ModelState_Ptr_t):: state_ptr
+
+        state_ptr = transfer(state_cnt, state_ptr)
+        state_ptr%p%gwd_launch_sigma=gwd_launch_sigma_in
+    end subroutine
+
     subroutine get_air_absortivity_co2(state_cnt, air_absortivity_co2_out)
         use params
         integer(8), intent(in) :: state_cnt
@@ -4663,6 +8327,456 @@ contains
     end subroutine
 
     subroutine is_array_ps_grid(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_dyn_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_phy_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_cnv_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_lsc_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_sw_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_lw_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_pbl_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_hs_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_dyn_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_phy_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_cnv_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_lsc_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_pbl_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_dyn_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_dyn_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_phy_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_phy_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_pbl_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_pbl_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_gwd_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_gwd_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_hs_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_hs_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ustr_sfc_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vstr_sfc_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_cloud_cover_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_stratiform_cloud_cover_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_total_cloud_top_pressure_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_total_cloud_top_count(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_conv_cloud_top_pressure_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_conv_cloud_top_count(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_column_water_vapor_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_precip_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_evap_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_down_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_up_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_net_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_olr_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lh_flux_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sh_flux_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_down_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_up_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_net_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_down_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_up_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_net_accum(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_dyn_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_phy_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_cnv_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_lsc_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_sw_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_lw_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_pbl_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ttend_hs_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_dyn_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_phy_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_cnv_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_lsc_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_qtend_pbl_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_dyn_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_dyn_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_phy_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_phy_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_pbl_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_pbl_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_gwd_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_gwd_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_utend_hs_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vtend_hs_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_ustr_sfc_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_vstr_sfc_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_cloud_cover_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_stratiform_cloud_cover_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_total_cloud_top_pressure_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_conv_cloud_top_pressure_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_column_water_vapor_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_precip_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_evap_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_down_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_up_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_toa_sw_net_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_olr_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lh_flux_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sh_flux_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_down_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_up_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_sw_net_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_down_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_up_mean(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.true.
+    end subroutine
+
+    subroutine is_array_surface_lw_net_mean(var_is_array)
         logical, intent(out) :: var_is_array
         var_is_array=.true.
     end subroutine
@@ -5118,6 +9232,16 @@ contains
         var_is_array=.false.
     end subroutine
 
+    subroutine is_array_ttend_daily_count(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_cloud_daily_count(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
     subroutine is_array_increase_co2(var_is_array)
         logical, intent(out) :: var_is_array
         var_is_array=.false.
@@ -5174,6 +9298,31 @@ contains
     end subroutine
 
     subroutine is_array_hs_min_pressure_ratio(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_orographic_gwd_enabled(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_gwd_time_scale_days(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_gwd_oro_threshold_m(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_gwd_oro_scale_m(var_is_array)
+        logical, intent(out) :: var_is_array
+        var_is_array=.false.
+    end subroutine
+
+    subroutine is_array_gwd_launch_sigma(var_is_array)
         logical, intent(out) :: var_is_array
         var_is_array=.false.
     end subroutine

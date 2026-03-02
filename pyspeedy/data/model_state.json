@@ -9,6 +9,26 @@
         "alt_name": "current_step",
         "std_name": "current_step"
     },
+    "ttend_daily_count": {
+        "dtype": "integer",
+        "dims": null,
+        "desc": "Number of time steps accumulated in the current daily tendency mean.",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "ttend_daily_count",
+        "std_name": "ttend_daily_count"
+    },
+    "cloud_daily_count": {
+        "dtype": "integer",
+        "dims": null,
+        "desc": "Number of radiation-step samples accumulated in the current daily cloud diagnostics mean.",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "cloud_daily_count",
+        "std_name": "cloud_daily_count"
+    },
     "vor": {
         "dtype": "complex(8)",
         "dims": "(mx, nx, kx, t_levs)",
@@ -193,6 +213,1222 @@
         ],
         "alt_name": "ps",
         "std_name": "ps_grid"
+    },
+    "ttend_dyn_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily dynamical temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_dyn_accum",
+        "std_name": "ttend_dyn_accum"
+    },
+    "ttend_phy_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily physical temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_phy_accum",
+        "std_name": "ttend_phy_accum"
+    },
+    "ttend_cnv_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily convective temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_cnv_accum",
+        "std_name": "ttend_cnv_accum"
+    },
+    "ttend_lsc_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily large-scale condensation temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_lsc_accum",
+        "std_name": "ttend_lsc_accum"
+    },
+    "ttend_sw_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily shortwave-radiative temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_sw_accum",
+        "std_name": "ttend_sw_accum"
+    },
+    "ttend_lw_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily longwave-radiative temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_lw_accum",
+        "std_name": "ttend_lw_accum"
+    },
+    "ttend_pbl_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily boundary-layer and surface-flux temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_pbl_accum",
+        "std_name": "ttend_pbl_accum"
+    },
+    "ttend_hs_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily Held-Suarez temperature tendency",
+        "time_dim": null,
+        "units": "K/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "ttend_hs_accum",
+        "std_name": "ttend_hs_accum"
+    },
+    "qtend_dyn_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily dynamical specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "qtend_dyn_accum",
+        "std_name": "qtend_dyn_accum"
+    },
+    "qtend_phy_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily physical specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "qtend_phy_accum",
+        "std_name": "qtend_phy_accum"
+    },
+    "qtend_cnv_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily convective specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "qtend_cnv_accum",
+        "std_name": "qtend_cnv_accum"
+    },
+    "qtend_lsc_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily large-scale-condensation specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "qtend_lsc_accum",
+        "std_name": "qtend_lsc_accum"
+    },
+    "qtend_pbl_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily boundary-layer and surface-flux specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/s",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "qtend_pbl_accum",
+        "std_name": "qtend_pbl_accum"
+    },
+    "utend_dyn_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily dynamical eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "utend_dyn_accum",
+        "std_name": "utend_dyn_accum"
+    },
+    "vtend_dyn_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily dynamical northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "vtend_dyn_accum",
+        "std_name": "vtend_dyn_accum"
+    },
+    "utend_phy_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily physical eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "utend_phy_accum",
+        "std_name": "utend_phy_accum"
+    },
+    "vtend_phy_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily physical northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "vtend_phy_accum",
+        "std_name": "vtend_phy_accum"
+    },
+    "utend_pbl_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily boundary-layer and surface-flux eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "utend_pbl_accum",
+        "std_name": "utend_pbl_accum"
+    },
+    "vtend_pbl_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily boundary-layer and surface-flux northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "vtend_pbl_accum",
+        "std_name": "vtend_pbl_accum"
+    },
+    "utend_gwd_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily orographic gravity-wave-drag eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "utend_gwd_accum",
+        "std_name": "utend_gwd_accum"
+    },
+    "vtend_gwd_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily orographic gravity-wave-drag northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "vtend_gwd_accum",
+        "std_name": "vtend_gwd_accum"
+    },
+    "utend_hs_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily Held-Suarez eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "utend_hs_accum",
+        "std_name": "utend_hs_accum"
+    },
+    "vtend_hs_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Accumulated daily Held-Suarez northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s^2",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "vtend_hs_accum",
+        "std_name": "vtend_hs_accum"
+    },
+    "ustr_sfc_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily area-weighted surface eastward stress diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "ustr_sfc_accum",
+        "std_name": "ustr_sfc_accum"
+    },
+    "vstr_sfc_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily area-weighted surface northward stress diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "vstr_sfc_accum",
+        "std_name": "vstr_sfc_accum"
+    },
+    "cloud_cover_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily total cloud-cover diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "cloud_cover_accum",
+        "std_name": "cloud_cover_accum"
+    },
+    "stratiform_cloud_cover_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily stratiform cloud-cover diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "stratiform_cloud_cover_accum",
+        "std_name": "stratiform_cloud_cover_accum"
+    },
+    "total_cloud_top_pressure_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily total cloud-top pressure diagnostic",
+        "time_dim": null,
+        "units": "hPa",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "total_cloud_top_pressure_accum",
+        "std_name": "total_cloud_top_pressure_accum"
+    },
+    "total_cloud_top_count": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Number of valid samples accumulated in the daily total cloud-top pressure diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "total_cloud_top_count",
+        "std_name": "total_cloud_top_count"
+    },
+    "conv_cloud_top_pressure_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily convective cloud-top pressure diagnostic",
+        "time_dim": null,
+        "units": "hPa",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "conv_cloud_top_pressure_accum",
+        "std_name": "conv_cloud_top_pressure_accum"
+    },
+    "conv_cloud_top_count": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Number of valid samples accumulated in the daily convective cloud-top pressure diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "conv_cloud_top_count",
+        "std_name": "conv_cloud_top_count"
+    },
+    "column_water_vapor_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily column water vapor diagnostic",
+        "time_dim": null,
+        "units": "mm",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "column_water_vapor_accum",
+        "std_name": "column_water_vapor_accum"
+    },
+    "precip_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily total precipitation diagnostic",
+        "time_dim": null,
+        "units": "g/(m^2 s)",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "precip_accum",
+        "std_name": "precip_accum"
+    },
+    "evap_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily surface evaporation diagnostic",
+        "time_dim": null,
+        "units": "g/(m^2 s)",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "evap_accum",
+        "std_name": "evap_accum"
+    },
+    "toa_sw_down_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily incoming top-of-atmosphere shortwave radiation",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_down_accum",
+        "std_name": "toa_sw_down_accum"
+    },
+    "toa_sw_up_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily outgoing top-of-atmosphere shortwave radiation",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_up_accum",
+        "std_name": "toa_sw_up_accum"
+    },
+    "toa_sw_net_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily net top-of-atmosphere shortwave radiation (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_net_accum",
+        "std_name": "toa_sw_net_accum"
+    },
+    "olr_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily outgoing longwave radiation at the top of atmosphere",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "olr_accum",
+        "std_name": "olr_accum"
+    },
+    "surface_lh_flux_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily upward latent heat flux at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lh_flux_accum",
+        "std_name": "surface_lh_flux_accum"
+    },
+    "surface_sh_flux_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily upward sensible heat flux at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sh_flux_accum",
+        "std_name": "surface_sh_flux_accum"
+    },
+    "surface_sw_down_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily downward shortwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_down_accum",
+        "std_name": "surface_sw_down_accum"
+    },
+    "surface_sw_up_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily upward shortwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_up_accum",
+        "std_name": "surface_sw_up_accum"
+    },
+    "surface_sw_net_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily net shortwave radiation at the surface (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_net_accum",
+        "std_name": "surface_sw_net_accum"
+    },
+    "surface_lw_down_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily downward longwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_down_accum",
+        "std_name": "surface_lw_down_accum"
+    },
+    "surface_lw_up_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily upward longwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_up_accum",
+        "std_name": "surface_lw_up_accum"
+    },
+    "surface_lw_net_accum": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Accumulated daily net longwave radiation at the surface (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_net_accum",
+        "std_name": "surface_lw_net_accum"
+    },
+    "ttend_dyn_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean dynamical temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_dyn",
+        "std_name": "ttend_dyn_mean"
+    },
+    "ttend_phy_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean physical temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_phy",
+        "std_name": "ttend_phy_mean"
+    },
+    "ttend_cnv_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean convective temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_cnv",
+        "std_name": "ttend_cnv_mean"
+    },
+    "ttend_lsc_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean large-scale condensation temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_lsc",
+        "std_name": "ttend_lsc_mean"
+    },
+    "ttend_sw_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean shortwave-radiative temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_sw",
+        "std_name": "ttend_sw_mean"
+    },
+    "ttend_lw_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean longwave-radiative temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_lw",
+        "std_name": "ttend_lw_mean"
+    },
+    "ttend_pbl_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean boundary-layer and surface-flux temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_pbl",
+        "std_name": "ttend_pbl_mean"
+    },
+    "ttend_hs_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean Held-Suarez temperature tendency",
+        "time_dim": null,
+        "units": "K/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "t_tend_hs",
+        "std_name": "ttend_hs_mean"
+    },
+    "qtend_dyn_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean dynamical specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "q_tend_dyn",
+        "std_name": "qtend_dyn_mean"
+    },
+    "qtend_phy_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean physical specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "q_tend_phy",
+        "std_name": "qtend_phy_mean"
+    },
+    "qtend_cnv_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean convective specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "q_tend_cnv",
+        "std_name": "qtend_cnv_mean"
+    },
+    "qtend_lsc_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean large-scale-condensation specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "q_tend_lsc",
+        "std_name": "qtend_lsc_mean"
+    },
+    "qtend_pbl_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean boundary-layer and surface-flux specific humidity tendency",
+        "time_dim": null,
+        "units": "g/kg/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "q_tend_pbl",
+        "std_name": "qtend_pbl_mean"
+    },
+    "utend_dyn_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean dynamical eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "u_tend_dyn",
+        "std_name": "utend_dyn_mean"
+    },
+    "vtend_dyn_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean dynamical northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "v_tend_dyn",
+        "std_name": "vtend_dyn_mean"
+    },
+    "utend_phy_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean physical eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "u_tend_phy",
+        "std_name": "utend_phy_mean"
+    },
+    "vtend_phy_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean physical northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "v_tend_phy",
+        "std_name": "vtend_phy_mean"
+    },
+    "utend_pbl_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean boundary-layer and surface-flux eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "u_tend_pbl",
+        "std_name": "utend_pbl_mean"
+    },
+    "vtend_pbl_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean boundary-layer and surface-flux northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "v_tend_pbl",
+        "std_name": "vtend_pbl_mean"
+    },
+    "utend_gwd_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean orographic gravity-wave-drag eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "u_tend_gwd",
+        "std_name": "utend_gwd_mean"
+    },
+    "vtend_gwd_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean orographic gravity-wave-drag northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "v_tend_gwd",
+        "std_name": "vtend_gwd_mean"
+    },
+    "utend_hs_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean Held-Suarez eastward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "u_tend_hs",
+        "std_name": "utend_hs_mean"
+    },
+    "vtend_hs_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il, kx)",
+        "desc": "Daily-mean Held-Suarez northward-wind tendency",
+        "time_dim": null,
+        "units": "m/s/day",
+        "nc_dims": [
+            "lon",
+            "lat",
+            "lev"
+        ],
+        "alt_name": "v_tend_hs",
+        "std_name": "vtend_hs_mean"
+    },
+    "ustr_sfc_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean area-weighted surface eastward stress diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "u_stress",
+        "std_name": "ustr_sfc_mean"
+    },
+    "vstr_sfc_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean area-weighted surface northward stress diagnostic",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "v_stress",
+        "std_name": "vstr_sfc_mean"
+    },
+    "cloud_cover_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean total cloud cover",
+        "time_dim": null,
+        "units": "1",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "cloud_cover",
+        "std_name": "cloud_cover_mean"
+    },
+    "stratiform_cloud_cover_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean stratiform cloud cover",
+        "time_dim": null,
+        "units": "1",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "stratiform_cloud_cover",
+        "std_name": "stratiform_cloud_cover_mean"
+    },
+    "total_cloud_top_pressure_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean total cloud-top pressure",
+        "time_dim": null,
+        "units": "hPa",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "total_cloud_top_pressure",
+        "std_name": "total_cloud_top_pressure_mean"
+    },
+    "conv_cloud_top_pressure_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean convective cloud-top pressure",
+        "time_dim": null,
+        "units": "hPa",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "conv_cloud_top_pressure",
+        "std_name": "conv_cloud_top_pressure_mean"
+    },
+    "column_water_vapor_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean column water vapor",
+        "time_dim": null,
+        "units": "mm",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "column_water_vapor",
+        "std_name": "column_water_vapor_mean"
+    },
+    "precip_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily total precipitation",
+        "time_dim": null,
+        "units": "mm/day",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "precip",
+        "std_name": "precip_mean"
+    },
+    "evap_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily total evaporation",
+        "time_dim": null,
+        "units": "mm/day",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "evap",
+        "std_name": "evap_mean"
+    },
+    "toa_sw_down_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean incoming top-of-atmosphere shortwave radiation",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_down",
+        "std_name": "toa_sw_down_mean"
+    },
+    "toa_sw_up_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean outgoing top-of-atmosphere shortwave radiation",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_up",
+        "std_name": "toa_sw_up_mean"
+    },
+    "toa_sw_net_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean net top-of-atmosphere shortwave radiation (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "toa_sw_net",
+        "std_name": "toa_sw_net_mean"
+    },
+    "olr_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean outgoing longwave radiation at the top of atmosphere",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "olr",
+        "std_name": "olr_mean"
+    },
+    "surface_lh_flux_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean upward latent heat flux at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lh_flux",
+        "std_name": "surface_lh_flux_mean"
+    },
+    "surface_sh_flux_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean upward sensible heat flux at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sh_flux",
+        "std_name": "surface_sh_flux_mean"
+    },
+    "surface_sw_down_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean downward shortwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_down",
+        "std_name": "surface_sw_down_mean"
+    },
+    "surface_sw_up_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean upward shortwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_up",
+        "std_name": "surface_sw_up_mean"
+    },
+    "surface_sw_net_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean net shortwave radiation at the surface (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_sw_net",
+        "std_name": "surface_sw_net_mean"
+    },
+    "surface_lw_down_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean downward longwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_down",
+        "std_name": "surface_lw_down_mean"
+    },
+    "surface_lw_up_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean upward longwave radiation at the surface",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_up",
+        "std_name": "surface_lw_up_mean"
+    },
+    "surface_lw_net_mean": {
+        "dtype": "real(8)",
+        "dims": "(ix, il)",
+        "desc": "Daily-mean net longwave radiation at the surface (downward positive)",
+        "time_dim": null,
+        "units": "W/m^2",
+        "nc_dims": [
+            "lon",
+            "lat"
+        ],
+        "alt_name": "surface_lw_net",
+        "std_name": "surface_lw_net_mean"
     },
     "precnv": {
         "dtype": "real(8)",
@@ -809,6 +2045,56 @@
         "alt_name": "hs_min_pressure_ratio",
         "std_name": "hs_min_pressure_ratio"
     },
+    "orographic_gwd_enabled": {
+        "dtype": "logical",
+        "dims": null,
+        "desc": "Flag for the optional orographic gravity-wave-drag scheme",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "orographic_gwd_enabled",
+        "std_name": "orographic_gwd_enabled"
+    },
+    "gwd_time_scale_days": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Reference drag time scale for the optional orographic gravity-wave-drag scheme",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "gwd_time_scale_days",
+        "std_name": "gwd_time_scale_days"
+    },
+    "gwd_oro_threshold_m": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Orography threshold for the optional orographic gravity-wave-drag scheme",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "gwd_oro_threshold_m",
+        "std_name": "gwd_oro_threshold_m"
+    },
+    "gwd_oro_scale_m": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Orography scale height used to saturate the optional orographic gravity-wave-drag scheme",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "gwd_oro_scale_m",
+        "std_name": "gwd_oro_scale_m"
+    },
+    "gwd_launch_sigma": {
+        "dtype": "real(8)",
+        "dims": null,
+        "desc": "Sigma level above which the optional orographic gravity-wave-drag profile is applied",
+        "time_dim": null,
+        "units": null,
+        "nc_dims": null,
+        "alt_name": "gwd_launch_sigma",
+        "std_name": "gwd_launch_sigma"
+    },
     "air_absortivity_co2": {
         "dtype": "real(8)",
         "dims": null,
@@ -993,7 +2279,7 @@
         "dims": "(ix, il)",
         "desc": "Soil water availability",
         "time_dim": null,
-        "units": null,
+        "units": "1",
         "nc_dims": [
             "lon",
             "lat"

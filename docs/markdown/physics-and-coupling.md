@@ -79,6 +79,20 @@ It works over land, sea, and area-weighted mixed surfaces.
 
 This is where lower-tropospheric mixing is handled in the current physics package.
 
+## Orographic gravity-wave drag
+
+pySPEEDY now also has an optional simple orographic gravity-wave-drag term in
+`speedy.f90/gravity_wave_drag.f90`.
+
+Current behavior:
+
+- disabled by default
+- acts only on momentum (`u`, `v`)
+- uses land fraction, resolved orography, low-level wind speed, and a fixed vertical
+  profile above a configurable sigma launch level
+- is intended as a lightweight unresolved mountain-drag option for the low-top T30 setup,
+  not as a full high-top Palmer-Shutts-Swinbank implementation
+
 ## Land model
 
 The land model in `speedy.f90/land_model.f90` is a slab land-surface model with:
@@ -123,9 +137,11 @@ Several useful experiment switches already exist in the mutable model state:
 - `increase_co2`: turn on the built-in CO2 optical-thickness trend used in `forcing.f90`
 - `land_coupling_flag`: use climatological land temperature or evolve the slab-land anomaly
 - `sst_anomaly_coupling_flag`: use SST anomalies or climatological SST only
+- `orographic_gwd_enabled`: enable the optional orographic gravity-wave-drag scheme
 
-These are not all exposed through `model_config.yml`; they can be changed directly on a model
-instance before or after initialization depending on the experiment.
+Some of these also have defaults in `model_config.yml` under the runtime sections such as
+`gravity_wave_drag`, but they can still be changed directly on a model instance before or after
+initialization depending on the experiment.
 
 Example:
 

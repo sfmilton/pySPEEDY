@@ -104,7 +104,12 @@ To run the model, we need to create an SPEEDY instance, set the boundary conditi
 The next example shows how to run a 1 week simulation using the default boundary and initial conditions::
 
   from pyspeedy import Speedy
-  from pyspeedy.callbacks import DiagnosticCheck, XarrayExporter
+  from pyspeedy.callbacks import (
+      DailyDiagnosticsExporter,
+      DiagnosticCheck,
+      RuntimeSummary,
+      XarrayExporter,
+  )
   from pyspeedy.config import load_config
 
   config = load_config()
@@ -123,13 +128,19 @@ The next example shows how to run a 1 week simulation using the default boundary
 
   callbacks = [
       DiagnosticCheck(interval=run_config.diag_interval),
+      RuntimeSummary(interval=run_config.diag_interval, verbose=run_config.verbose_output),
       XarrayExporter(
           interval=run_config.history_interval,
           output_dir=run_config.output_dir,
           variables=run_config.output_vars,
           verbose=run_config.verbose_output,
       ),
+      DailyDiagnosticsExporter(
+          output_dir=run_config.output_dir,
+          verbose=run_config.verbose_output,
+      ),
   ]
+  history_exporter = callbacks[2]
 
   # Print the names of output variables that will be saved.
   # Note that the variables shown next are in the grid space (not the spectral space)
@@ -138,6 +149,27 @@ The next example shows how to run a 1 week simulation using the default boundary
   # Run the model
   model.run(callbacks=callbacks)
   # After the model is run, the model state will keep the last values of the last integration step.
+  # By default, the exporters accumulate one NetCDF per calendar month and keep
+  # updating the filename day range, for example ``..._1980-01_d02-d08.nc``.
+  # Each monthly sigma-level file also gets a companion ``*_p.nc`` file with the
+  # 3-D variables interpolated to standard pressure levels. DailyDiagnosticsExporter
+  # merges the daily-mean tendency and surface/radiation/cloud diagnostics into
+  # those same monthly ``.nc`` and ``*_p.nc`` files, and also writes derived
+  # ``*_monthly_mean.nc`` / ``*_monthly_mean_p.nc`` and
+  # ``*_seasonal_mean.nc`` / ``*_seasonal_mean_p.nc`` files for DJF, MAM, JJA,
+  # and SON.
+  # The default output includes dynamics, total physics, boundary-layer/surface
+  # drag, optional orographic gravity-wave drag, and Held-Suarez momentum
+  # tendencies, together with daily-mean surface stress diagnostics
+  # (``u_stress`` and ``v_stress``), total and stratiform cloud cover, total and
+  # convective cloud-top pressure, column water vapor, precipitation and
+  # evaporation in mm/day, prescribed soil water availability, TOA shortwave and
+  # OLR diagnostics in W/m^2, surface latent/sensible heat fluxes, and
+  # downward/upward/net surface SW and LW fluxes, plus the existing temperature
+  # tendency split and the moisture
+  # tendency split
+  # (dynamics, total physics, convection, large-scale condensation, and
+  # boundary-layer/surface fluxes).
 
 
 Indices and tables

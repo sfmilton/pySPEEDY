@@ -84,10 +84,20 @@ class HeldSuarezConfig:
 
 
 @dataclass(frozen=True)
+class GravityWaveDragConfig:
+    enabled: bool
+    time_scale_days: float
+    orography_threshold_m: float
+    orography_scale_m: float
+    launch_sigma: float
+
+
+@dataclass(frozen=True)
 class PySpeedyConfig:
     model: ModelConfig
     run: RunConfig
     held_suarez: HeldSuarezConfig
+    gravity_wave_drag: GravityWaveDragConfig
 
 
 def _coerce_datetime(value: date | datetime | str) -> datetime:
@@ -137,7 +147,20 @@ def load_config(path: str | Path | None = None) -> PySpeedyConfig:
         rayleigh_drag_days=held_suarez_raw.get("rayleigh_drag_days", 1.0),
         minimum_pressure_ratio=held_suarez_raw.get("minimum_pressure_ratio", 1.0e-4),
     )
-    return PySpeedyConfig(model=model, run=run, held_suarez=held_suarez)
+    gwd_raw = raw.get("gravity_wave_drag", {})
+    gravity_wave_drag = GravityWaveDragConfig(
+        enabled=gwd_raw.get("enabled", False),
+        time_scale_days=gwd_raw.get("time_scale_days", 10.0),
+        orography_threshold_m=gwd_raw.get("orography_threshold_m", 500.0),
+        orography_scale_m=gwd_raw.get("orography_scale_m", 1500.0),
+        launch_sigma=gwd_raw.get("launch_sigma", 0.7),
+    )
+    return PySpeedyConfig(
+        model=model,
+        run=run,
+        held_suarez=held_suarez,
+        gravity_wave_drag=gravity_wave_drag,
+    )
 
 
 def gaussian_latitudes(iy: int) -> np.ndarray:

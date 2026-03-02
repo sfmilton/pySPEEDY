@@ -20,7 +20,7 @@ With the current defaults the run is:
 - start date: `1980-01-01`
 - end date: `1980-01-08`
 - one full week because `end_date` is exclusive
-- one output file per day
+- monthly output files with the covered day range in the filename
 
 ## Output files
 
@@ -65,13 +65,22 @@ Main controls:
 - `verbose_output`
 - `output_vars`
 
-The `held_suarez` section is also runtime-configurable and does not require a rebuild.
-It controls the benchmark constants such as:
+The `held_suarez` and `gravity_wave_drag` sections are also runtime-configurable and do not require a rebuild.
+
+`held_suarez` controls the benchmark constants such as:
 
 - equilibrium temperature parameters
 - boundary-layer sigma threshold
 - Newtonian-cooling timescales
 - Rayleigh-drag timescale
+
+`gravity_wave_drag` controls the optional orographic GWD defaults:
+
+- `enabled`
+- `time_scale_days`
+- `orography_threshold_m`
+- `orography_scale_m`
+- `launch_sigma`
 
 ### 3. Per-run Python choices
 
@@ -92,7 +101,12 @@ Examples:
 from datetime import datetime
 
 from pyspeedy import Speedy
-from pyspeedy.callbacks import DiagnosticCheck, XarrayExporter
+from pyspeedy.callbacks import (
+    DailyDiagnosticsExporter,
+    DiagnosticCheck,
+    RuntimeSummary,
+    XarrayExporter,
+)
 
 model = Speedy(
     start_date=datetime(1980, 1, 1),
@@ -103,10 +117,53 @@ model.set_bc()
 
 callbacks = [
     DiagnosticCheck(interval=36),
+    RuntimeSummary(interval=180, verbose=True),
     XarrayExporter(interval=36, output_dir="./data", verbose=True),
+    DailyDiagnosticsExporter(output_dir="./data", verbose=True),
 ]
 
 model.run(callbacks=callbacks)
+```
+
+By default, the exporters accumulate one NetCDF per calendar month in `output_dir` and keep updating the
+filename day range, for example `..._1980-01_d02-d08.nc`.
+
+Each monthly sigma-level export also gets a companion `*_p.nc` file with the 3-D model fields interpolated
+to standard pressure levels.
+
+`DailyDiagnosticsExporter` now merges the daily diagnostics directly into those same monthly `.nc`
+and `*_p.nc` files instead of writing separate `_tend` files. The daily fields include temperature
+tendencies in K/day, moisture tendencies in g/kg/day, and eastward/northward wind tendency diagnostics
+in m/s/day on sigma and pressure levels. The default fields include dynamics, total physics,
+convection, large-scale condensation, and boundary-layer/surface moisture tendencies, plus dynamics,
+total physics, boundary-layer drag, optional orographic gravity-wave drag, and Held-Suarez momentum
+tendencies, together with daily-mean surface stress diagnostics (`u_stress`, `v_stress`), cloud
+diagnostics (`cloud_cover`, `stratiform_cloud_cover`, `total_cloud_top_pressure`,
+`conv_cloud_top_pressure`, `column_water_vapor`), precipitation and evaporation (`precip`, `evap`)
+in mm/day, prescribed soil water availability (`soil_avail_water`), daily TOA shortwave and OLR
+diagnostics (`toa_sw_down`, `toa_sw_up`, `toa_sw_net`, `olr`) in `W/m^2`, daily surface
+latent/sensible heat fluxes (`surface_lh_flux`, `surface_sh_flux`), and downward/upward/net surface
+SW and LW fluxes (`surface_sw_*`, `surface_lw_*`).
+
+When monthly file mode is active, the same callback also writes derived monthly-mean files
+(`*_monthly_mean.nc`, `*_monthly_mean_p.nc`) and seasonal-mean files
+(`*_seasonal_mean.nc`, `*_seasonal_mean_p.nc`) for the standard meteorological seasons `DJF`,
+`MAM`, `JJA`, and `SON`.
+
+`RuntimeSummary` is useful for long integrations. At a day-based interval, it prints one compact
+line with the current date, global-mean lowest-level temperature, global-mean daily precipitation,
+global-mean daily net TOA radiation, `max|u|`, and `min(q)`.
+
+The optional orographic gravity-wave drag scheme is disabled by default and can be enabled at runtime:
+
+```python
+model["orographic_gwd_enabled"] = True
+```
+
+To inspect the daily diagnostics inside a monthly output file quickly from the terminal:
+
+```bash
+python scripts/inspect_tendency.py data/SPEEDY_T30_1980-01_d02-d08.nc
 ```
 
 ## Held-Suarez run
