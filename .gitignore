@@ -26,3 +26,4 @@ examples/data
 /docs/_build
 /libspeedy.a
 /.eggs/
+/data/
